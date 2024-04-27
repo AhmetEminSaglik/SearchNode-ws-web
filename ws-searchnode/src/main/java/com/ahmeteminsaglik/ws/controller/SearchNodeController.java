@@ -11,17 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 public class SearchNodeController {
-    SearchNode<String> sn= SearchNodeInitializer.getSearchNode();
+    SearchNode<String> sn = SearchNodeInitializer.getSearchNode();
 
     @GetMapping()
+//    public ResponseEntity<SearchNodeDTO<String>> getSearchNodeDTO() {
     public SearchNodeDTO<String> getSearchNodeDTO() {
-        sn.add("Furkan", "Akgun'de calisiyor");
-        sn.add("Furkan", "Soyadi Cetin");
-        sn.add("Furkan", "Soyadi Cetin");
-        sn.add("Ahmet", "Ilk ismim");
-        sn.add("Ahmet Emin", "");
+        if (sn.getTotalItemNumber() == 0) {
+            sn.add("Furkan", "Akgun'de calisiyor");
+            sn.add("Ahmet", "Ilk ismim");
+            sn.add("Furkan", "Soyadi Cetin");
+            sn.add("Furkan", "Soyadi Cetin");
+            sn.add("Ahmet Emin", "");
+        }
+
         SearchNodeDTO<String> dto = SearchNodeMapper.toDTO(sn);
         return dto;
+//        return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
 }

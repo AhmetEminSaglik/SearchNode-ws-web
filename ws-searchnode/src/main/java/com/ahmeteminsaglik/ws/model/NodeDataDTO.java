@@ -36,7 +36,7 @@ public class NodeDataDTO<T> {
         this.locationAddress = locationAddress;
     }
 
-    public List<DataInfoDTO<T>> getListDataInfoDto() {
+    public List<DataInfoDTO<T>> getListDataInfoDTO() {
         return listDataInfoDTO;
     }
 
