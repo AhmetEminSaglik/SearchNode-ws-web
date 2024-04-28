@@ -1,0 +1,20 @@
+1-) row  ->  :
+	2-) Expanded  ->  :
+		3-) getList  ->   Consumer - ListviewBuilder : 
+			 4-) _buildListItem -> Provider.of  ... Consumer (listen:false) - ListTile :
+	2-) Expanded ->  :
+		3-) ListView
+	2-) Expanded ->  :
+		3-) ListView
+	
+	
+	
+	
+ListView : Listview  --> inner listview have to use  : [shrinkWrap: true]
+
+
+
+-----------------------------------
+    //1-) SingleChildScrollView ( column( Listview ( shrinkWrap:true
+    //2-) ListView( Column)
+    //3-) Row ( expanded ( listview( ...))))

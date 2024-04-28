@@ -6,12 +6,18 @@ import 'package:provider/provider.dart';
 class SearchNodeArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return _getSearchNodeDataList();
+    return Column(
+      children: [
+        _getSearchNodeDataList(),
+      ],
+    );
   }
 
   Widget _getSearchNodeDataList() {
     return Consumer<SearchNodeAreaViewModel>(
         builder: (context, viewModel, child) => ListView.builder(
+          shrinkWrap: true,
+            scrollDirection: Axis.vertical,
             itemCount: viewModel.searchNode?.nodeDataDTOList?.length ?? 0,
             // if this is null, it works forever
             itemBuilder: (context, index) {
