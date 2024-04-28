@@ -1,21 +1,20 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/node_data_dto.dart';
 
-class SearchNodeResponsive {
-  List<NodeDataDTO>? nodeDataDTOList;
+class SearchNodeResponsive with ChangeNotifier{
+  List<NodeDataDTO>? nodeDataDTOList=[];
 
-  SearchNodeResponsive({this.nodeDataDTOList});
+  SearchNodeResponsive({this.nodeDataDTOList}) {
+    if (this.nodeDataDTOList == null) {
+      this.nodeDataDTOList = [];
+    }
+  }
 
   SearchNodeResponsive.fromJson(Map<String, dynamic> json) {
     if (json['nodeDataDTOList'] != null) {
       nodeDataDTOList = <NodeDataDTO>[];
       json['nodeDataDTOList'].forEach((v) {
-        // NodeDataDTO nodeDataDTO = new NodeDataDTO.fromJson(v);
-        // print('nodeDataDTOList ======>>> $nodeDataDTO');
-        // nodeDataDTOList!.add(nodeDataDTO);
-        print(' nodeDataDto v : $v');
         nodeDataDTOList!.add(new NodeDataDTO.fromJson(v));
-        // print("----------------------------\ngelen json : $json");
-        // print('\nnodeDataDTOList ${json["nodeDataDTOList"]}');
       });
     }
   }
@@ -27,5 +26,10 @@ class SearchNodeResponsive {
           this.nodeDataDTOList!.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'SearchNodeResponsive{nodeDataDTOList: $nodeDataDTOList}';
   }
 }

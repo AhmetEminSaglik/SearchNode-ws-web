@@ -13,9 +13,7 @@ class SearchNodeHttpRequest {
     Uri url = Uri.parse(_baseUrl);
     print("Link : $url");
     var data = await http.get(url, headers: HttpUtil.header);
-    // print(">>>>>>>> response : ${data.body}");
     Map<String, dynamic> map = json.decode(data.body);
-    // List<SearchNodeResponsive> list=RepositorySearchNode.parseToList(map);
     return RepositorySearchNode.parseToSearchNode(map);
   }
 }

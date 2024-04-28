@@ -1,0 +1,14 @@
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/flutter_web_searchnode
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/icudtl.dat
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin.json
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/version.json
+/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf

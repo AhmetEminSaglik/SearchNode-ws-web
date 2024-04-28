@@ -19,8 +19,8 @@ public class SearchNodeController {
         if (sn.getTotalItemNumber() == 0) {
             sn.add("Furkan", "Akgun'de calisiyor");
             sn.add("Ahmet", "Ilk ismim");
-            sn.add("Furkan", "Soyadi Cetin");
-            sn.add("Furkan", "Soyadi Cetin");
+//            sn.add("Furkan", "Soyadi Cetin");
+//            sn.add("Furkan", "Soyadi Cetin");
             sn.add("Ahmet Emin", "");
         }
 

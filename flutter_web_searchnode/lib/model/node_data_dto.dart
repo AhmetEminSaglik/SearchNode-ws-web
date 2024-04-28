@@ -1,7 +1,7 @@
-
+import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/data_info_dto.dart';
 
-class NodeDataDTO {
+class NodeDataDTO with ChangeNotifier{
   int? deep;
   int? nextDirectionsTotalValueNumber;
   String? locationAddress;
@@ -9,9 +9,9 @@ class NodeDataDTO {
 
   NodeDataDTO(
       {this.deep,
-        this.nextDirectionsTotalValueNumber,
-        this.locationAddress,
-        this.listDataInfoDTO});
+      this.nextDirectionsTotalValueNumber,
+      this.locationAddress,
+      this.listDataInfoDTO});
 
   NodeDataDTO.fromJson(Map<String, dynamic> json) {
     deep = json['deep'];
@@ -20,12 +20,7 @@ class NodeDataDTO {
     if (json['listDataInfoDTO'] != null) {
       listDataInfoDTO = <DataInfoDTO>[];
       json['listDataInfoDTO'].forEach((v) {
-        // print(' v :$v');
-        // DataInfoDTO dataInfoDTO=DataInfoDTO.fromJson(v);
-        // print('listDataInfoDTO ++++++>>> $dataInfoDTO');
-        // listDataInfoDTO!.add(dataInfoDTO);
         listDataInfoDTO!.add(DataInfoDTO.fromJson(v));
-        // print("\n+++++++ json : $json");
       });
     }
   }
@@ -48,4 +43,3 @@ class NodeDataDTO {
     return 'NodeDataDTO{deep: $deep, nextDirectionsTotalValueNumber: $nextDirectionsTotalValueNumber, locationAddress: $locationAddress, list: $listDataInfoDTO}';
   }
 }
-

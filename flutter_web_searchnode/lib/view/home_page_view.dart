@@ -1,50 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_searchnode/view_model/home_page_view_model.dart';
+import 'package:flutter_web_searchnode/view/SearchNodeArea.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  // void getData() async {
-  //   await SearchNodeHttpRequest.requestTest();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // getData();
-    SearchNodeAreaViewModel snvm= new SearchNodeAreaViewModel();
+    // SearchNodeAreaViewModel searchNodeAreaViewModel =
+    //     new SearchNodeAreaViewModel();
     return Scaffold(
       appBar: _buildAppBar(),
-      body: _buildBody(),
+      // body: _buildBody(),
+      body: _buildBody(context),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(
-            child: Column(children: [
-          _buildTitleOfDividedArea(title: "SEARCHNODE", color: Colors.red),
-          // Container(color: Colors.red, child: Center(child: Text("SearchNode"))),
-        ])),
+        // Expanded(child: _getSearchNodeArea()),
+        Expanded(child: SearchNodeArea()/*_getSearchNodeArea(context)*/),
         VerticalDivider(),
         Expanded(
             child: ListView(children: [
-          _buildTitleOfDividedArea(title: "PROCESS", color: Colors.lightBlue),
-          Container(color: Colors.red, child: Center(child: Text("Ahmet"))),
-        ])),
+              _buildTitleOfDividedArea(
+                  title: "PROCESS", color: Colors.lightBlue),
+              Container(color: Colors.red, child: Center(child: Text("Ahmet"))),
+            ])),
         VerticalDivider(),
         Expanded(
             child: ListView(children: [
-          _buildTitleOfDividedArea(title: "RESULT", color: Colors.orange),
-          Container(color: Colors.yellow, child: Center(child: Text("Ahmet"))),
-          Container(color: Colors.blue, child: Center(child: Text("Ahmet"))),
-          Container(
-              color: Colors.greenAccent, child: Center(child: Text("Ahmet"))),
-        ])),
+              _buildTitleOfDividedArea(title: "RESULT", color: Colors.orange),
+              Container(
+                  color: Colors.yellow, child: Center(child: Text("Ahmet"))),
+              Container(
+                  color: Colors.blue, child: Center(child: Text("Ahmet"))),
+              Container(
+                  color: Colors.greenAccent,
+                  child: Center(child: Text("Ahmet"))),
+            ])),
       ],
     );
   }
+
+
 
   AppBar _buildAppBar() {
     return AppBar(
@@ -58,8 +56,12 @@ class HomePage extends StatelessWidget {
         color: color,
         child: Center(
             child: Text(
-          title,
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        )));
+              title,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            )));
   }
+
+
+
+
 }

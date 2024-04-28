@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/view/home_page_view.dart';
+import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,7 +13,13 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+              create: (BuildContext context) => SearchNodeAreaViewModel()),
+        ],
+        child: HomePage(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
