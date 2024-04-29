@@ -21,6 +21,7 @@ public class SearchNodeController {
 //                sn.add(i+"");
 //            }
             sn.add("Furkan", "Akgun'de calisiyor");
+            sn.add("Ahmet", "Ilk ismim2");
             sn.add("Ahmet", "Ilk ismim");
             sn.add("Ahmet", "Ilk ismim");
 //            sn.add("Furkan", "Soyadi Cetin");
