@@ -17,7 +17,7 @@ class SearchNodeArea extends StatelessWidget {
   Widget _getSearchNodeDataList() {
     return Consumer<SearchNodeAreaViewModel>(
         builder: (context, viewModel, child) => ListView.builder(
-          shrinkWrap: true,
+            shrinkWrap: true,
             scrollDirection: Axis.vertical,
             itemCount: viewModel.searchNode?.nodeDataDTOList?.length ?? 0,
             // if this is null, it works forever
@@ -28,19 +28,35 @@ class SearchNodeArea extends StatelessWidget {
                       value: viewModel.searchNode?.nodeDataDTOList?[index],
                       child: _buildListItem(context, index),
                     );
-            } //_getItemBuilder
-            ));
+            }));
   }
 
-  _buildListItem(BuildContext context, int index) {
+  Widget _buildListItem(BuildContext context, int index) {
     SearchNodeAreaViewModel viewModel =
         Provider.of<SearchNodeAreaViewModel>(context, listen: false);
+
     return Consumer<NodeDataDTO?>(
-      builder: (context, nodeDataDTO, child) => ListTile(
-        title: Text(
-            viewModel.searchNode?.nodeDataDTOList?[index].locationAddress ??
-                "no-data"),
+      builder: (context, nodeDataDTO, child) => Card(
+        child: ListTile(
+          title: Text(
+              viewModel.searchNode?.nodeDataDTOList?[index].locationAddress ??
+                  "no-data"),
+          leading: _getLeadingNo(index),
+          // onTap: _clickItem(index),
+          onTap: () {
+            _clickItem(index);
+          },
+        ),
       ),
     );
+  }
+
+  Text _getLeadingNo(int index) => Text(
+        "${index + 1}-)",
+        style: TextStyle(fontSize: 20),
+      );
+
+  _clickItem(int index) {
+    print("Clicked $index");
   }
 }

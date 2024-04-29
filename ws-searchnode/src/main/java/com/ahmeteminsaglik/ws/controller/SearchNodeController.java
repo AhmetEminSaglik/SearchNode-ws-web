@@ -17,9 +17,9 @@ public class SearchNodeController {
 //    public ResponseEntity<SearchNodeDTO<String>> getSearchNodeDTO() {
     public SearchNodeDTO<String> getSearchNodeDTO() {
         if (sn.getTotalItemNumber() == 0) {
-            for(int i=0;i<100;i++){
-                sn.add(i+"");
-            }
+//            for(int i=0;i<100;i++){
+//                sn.add(i+"");
+//            }
             sn.add("Furkan", "Akgun'de calisiyor");
             sn.add("Ahmet", "Ilk ismim");
             sn.add("Ahmet", "Ilk ismim");

@@ -4,44 +4,15 @@ import 'package:flutter_web_searchnode/view/SearchNodeArea.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // SearchNodeAreaViewModel searchNodeAreaViewModel =
-    //     new SearchNodeAreaViewModel();
     return Scaffold(
       appBar: _buildAppBar(),
       body: _buildBody(),
-      // body: _buildBody3(context),
     );
   }
 
-  /*
-  * //1-) SingleChildScrollView ( column( Listview ( shrinkWrap:true
-    //2-) ListView( Column)
-    //3-) Row ( expanded ( listview( ...))))
-    * */
-
-  Widget _buildBody3(BuildContext context) {
-    //1-) SingleChildScrollView ( column( Listview ( shrinkWrap:true
-    //2-) ListView( Column)
-    //3-) Row ( expanded ( listview( ...))))
-    return Row(
-      children: [
-        Expanded(
-          child: ListView(
-            // scrollDirection: Axis.horizontal,
-            // shrinkWrap: true,
-            // physics: ClampingScrollPhysics(),
-            children: [
-              _buildTitleOfDividedArea(
-                  title: "SEARCH NODE ", color: Colors.lightBlue),
-              _buildTitleOfDividedArea(
-                  title: "SEARCH NODE ", color: Colors.lightBlue),
-              _buildTitleOfDividedArea(
-                  title: "SEARCH NODE ", color: Colors.lightBlue),
-              SearchNodeArea(),
-            ],
-          ),
-        ),
-      ],
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: null, //Text("SearchNode Project"),
     );
   }
 
@@ -77,12 +48,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar() {
-    return AppBar(
-      title: null, //Text("SearchNode Project"),
-    );
-  }
-
   Widget _buildTitleOfDividedArea(
       {required String title, required Color color}) {
     return Card(
@@ -92,56 +57,5 @@ class HomePage extends StatelessWidget {
           title,
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         )));
-  }
-
-  Widget _buildBody2(BuildContext context) {
-    return ListView(
-      children: [
-        ListView(
-          shrinkWrap: true,
-          children: [
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            _buildTitleOfDividedArea(
-                title: "SEARCH NODE ", color: Colors.lightBlue),
-            SearchNodeArea(),
-          ],
-        ),
-      ],
-    );
   }
 }
