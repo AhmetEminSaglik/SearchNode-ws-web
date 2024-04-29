@@ -92,7 +92,8 @@ class SearchNodeArea extends StatelessWidget {
             ],
           ),
         ),
-        leading: _getCircularShapeIntValue(index + 1, Colors.blue),
+        leading: _getSubItemTextKey(text: "${index + 1}-) "),
+        //_getCircularShapeIntValue(index + 1, Colors.blue),
         trailing: _getCircularShapeIntValue(
             nodeData.listDataInfoDTO!.length, Colors.red),
         // leading: _getCircularShapeIntValue(index + 1),
@@ -118,15 +119,18 @@ class SearchNodeArea extends StatelessWidget {
                     text: "Total Added :${dataInfo.totalSameNum!}")
               ],
             ),*/
+            Center(
+                child: _getCircularShapeIntValue(
+                    _getDataInfoNo(dataInfo), Colors.blue)),
             Row(
               children: [
-                _getSubItemTextKey(text: "${_getDataInfoNo(dataInfo)}Index :"),
+                _getSubItemTextKey(text: "Index : "),
                 _getSubItemTextValue(text: "${dataInfo.index!}")
               ],
             ),
             Row(
               children: [
-                _getSubItemTextKey(text: "Total Added :"),
+                _getSubItemTextKey(text: "Total Added : "),
                 _getSubItemTextValue(text: "${dataInfo.totalSameNum!}")
               ],
             ),
@@ -148,7 +152,7 @@ class SearchNodeArea extends StatelessWidget {
   Widget _ExpansionInnerPadding({required Widget child}) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(left: 15),
+        padding: const EdgeInsets.only(left: 10),
         child: child,
       ),
     );
@@ -156,8 +160,7 @@ class SearchNodeArea extends StatelessWidget {
 
   SizedBox _getHeightSpace([double height = 5]) => SizedBox(height: height);
 
-  String _getDataInfoNo(DataInfoDTO dataInfo) =>
-      (dataInfo.index! + 1).toString() + "-) ";
+  int _getDataInfoNo(DataInfoDTO dataInfo) => (dataInfo.index! + 1);
 
   Container _getCircularShapeIntValue(int length,
       [Color color = Colors.black]) {
@@ -167,7 +170,9 @@ class SearchNodeArea extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(50)),
-      child: Text("$length", style: TextStyle(fontSize: 20, color: color)),
+      child: Text("$length",
+          style: TextStyle(
+              fontSize: 20, color: color, fontWeight: FontWeight.bold)),
     );
   }
 
