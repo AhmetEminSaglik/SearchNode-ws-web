@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_web_searchnode/view/SearchNodeArea.dart';
 
 class HomePage extends StatelessWidget {
@@ -46,17 +44,17 @@ class HomePage extends StatelessWidget {
       ],
     );
   }
+
   Widget _buildBody() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // Expanded(child: _getSearchNodeArea()),
         Expanded(
-          child: ListView(
+          child: Column(
             children: [
               _buildTitleOfDividedArea(
                   title: "SEARCH NODE ", color: Colors.lightBlue),
-              SearchNodeArea(),
+              Expanded(child: SearchNodeArea()),
             ],
           ),
         ),
@@ -146,6 +144,4 @@ class HomePage extends StatelessWidget {
       ],
     );
   }
-
-
 }

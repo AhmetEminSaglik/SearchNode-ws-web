@@ -18,3 +18,16 @@ ListView : Listview  --> inner listview have to use  : [shrinkWrap: true]
     //1-) SingleChildScrollView ( column( Listview ( shrinkWrap:true
     //2-) ListView( Column)
     //3-) Row ( expanded ( listview( ...))))
+    
+    
+    
+-----------------------------------
+2-) Keep Container fixed in Column : 
+
+Row >  
+    -expanded() >Column > 
+    			Container() --> this will be fixed
+                        Expanded>
+                        	 Listview
+    -expanded()
+    -expanded()

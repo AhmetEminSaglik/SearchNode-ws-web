@@ -6,7 +6,8 @@ import 'package:provider/provider.dart';
 class SearchNodeArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
+      shrinkWrap: true,
       children: [
         _getSearchNodeDataList(),
       ],
