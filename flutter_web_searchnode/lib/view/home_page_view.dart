@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_searchnode/view/ProcessArea.dart';
 import 'package:flutter_web_searchnode/view/SearchNodeArea.dart';
 
 class HomePage extends StatelessWidget {
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
         Expanded(
             child: ListView(children: [
           _buildTitleOfDividedArea(title: "PROCESS", color: Colors.lightBlue),
-          Container(color: Colors.red, child: Center(child: Text("Ahmet"))),
+              ProcessArea(),
         ])),
         VerticalDivider(),
         Expanded(

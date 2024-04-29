@@ -95,7 +95,7 @@ class SearchNodeArea extends StatelessWidget {
         leading: _getSubItemTextKey(text: "${index + 1}-) "),
         //_getCircularShapeIntValue(index + 1, Colors.blue),
         trailing: _getCircularShapeIntValue(
-            nodeData.listDataInfoDTO!.length, Colors.red),
+            value: nodeData.listDataInfoDTO!.length, color: Colors.black),
         // leading: _getCircularShapeIntValue(index + 1),
         // trailing: _getCircularShapeIntValue(nodeData.listDataInfoDTO!.length),
         children: viewModel.searchNode!.nodeDataDTOList![index].listDataInfoDTO!
@@ -121,7 +121,9 @@ class SearchNodeArea extends StatelessWidget {
             ),*/
             Center(
                 child: _getCircularShapeIntValue(
-                    _getDataInfoNo(dataInfo), Colors.blue)),
+              value: _getDataInfoNo(dataInfo),
+              color: Colors.white,backgroundColor: Colors.black
+            )),
             Row(
               children: [
                 _getSubItemTextKey(text: "Index : "),
@@ -162,15 +164,17 @@ class SearchNodeArea extends StatelessWidget {
 
   int _getDataInfoNo(DataInfoDTO dataInfo) => (dataInfo.index! + 1);
 
-  Container _getCircularShapeIntValue(int length,
-      [Color color = Colors.black]) {
+  Container _getCircularShapeIntValue(
+      {required int value,
+      Color color = Colors.black,
+      Color backgroundColor = Colors.white}) {
     return Container(
       width: 30,
       height: 30,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(50)),
-      child: Text("$length",
+          color: backgroundColor, borderRadius: BorderRadius.circular(50)),
+      child: Text("$value",
           style: TextStyle(
               fontSize: 20, color: color, fontWeight: FontWeight.bold)),
     );
