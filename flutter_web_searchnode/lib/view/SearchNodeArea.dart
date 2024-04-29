@@ -201,13 +201,4 @@ class SearchNodeArea extends StatelessWidget {
       ],
     );
   }
-
-  Text _getLeadingNo(int index) => Text(
-        "${index + 1}-)",
-        style: TextStyle(fontSize: 20),
-      );
-
-  _clickItem(int index) {
-    print("Clicked $index");
-  }
 }

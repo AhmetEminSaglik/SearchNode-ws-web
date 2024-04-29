@@ -9,10 +9,7 @@ class SearchNodeAreaViewModel with ChangeNotifier {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await retrieveSearchNodeData();
     });
-    // print('"???????');
   }
-
-  /*Future<void>*/
   retrieveSearchNodeData() async {
     searchNode = await SearchNodeHttpRequest.getAllSearchNodeData();
     notifyListeners();
