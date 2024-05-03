@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_searchnode/view/process/DeleteTab.dart';
+import 'package:flutter_web_searchnode/view/process/SaveTab.dart';
+import 'package:flutter_web_searchnode/view/process/UpdateTab.dart';
 
 class ProcessArea extends StatelessWidget {
   @override
@@ -6,33 +9,28 @@ class ProcessArea extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: Colors.greenAccent,
+        // backgroundColor: Colors.greenAccent,
         appBar: AppBar(
             toolbarHeight: 0,
             leading: null,
             automaticallyImplyLeading: false,
             bottom: TabBar(
               // indicatorColor: Colors.red,
-              labelColor: Colors.red,
-              overlayColor:
-                  MaterialStateColor.resolveWith((states) => Colors.pinkAccent),
+              // labelColor: Colors.red,
+/*              overlayColor:
+                  MaterialStateColor.resolveWith((states) => Colors.grey),*/
+              dividerColor: Colors.black,
               tabs: [
-                Tab(
-                  child: _getTabBarText("Save", Icons.save),
-                ),
-                Tab(
-                  child: _getTabBarText("Update", Icons.update),
-                ),
-                Tab(
-                  child: _getTabBarText("Delete", Icons.delete),
-                ),
+                Tab(child: _getTabBarText("Save", Icons.add, Colors.blue)),
+                Tab(child: _getTabBarText("Update", Icons.edit, Colors.green)),
+                Tab(child: _getTabBarText("Delete", Icons.delete, Colors.red)),
               ],
             )),
         body: TabBarView(
           children: [
-            Text("data"),
-            Text("data"),
-            Text("data"),
+            SaveTab(),
+            UpdateTab(),
+            DeleteTab(),
           ],
         ),
       ),
@@ -48,21 +46,13 @@ class ProcessArea extends StatelessWidget {
   */
   }
 
-  Widget _getTabBarText(String text, IconData iconData) {
+  Widget _getTabBarText(String text, IconData iconData,
+      [Color color = Colors.black]) {
     return RichText(
         text: TextSpan(children: [
-      TextSpan(text: text, style: TextStyle(color: Colors.black, fontSize: 25)),
-      WidgetSpan(
-        child: SizedBox(
-          width: 25,
-        ),
-      ),
-      WidgetSpan(
-          child: Icon(
-        iconData,
-        color: Colors.black,
-        size: 35,
-      )),
+      TextSpan(text: text, style: TextStyle(color: color, fontSize: 20)),
+      const WidgetSpan(child: SizedBox(width: 5)),
+      WidgetSpan(child: Icon(iconData, color: color, size: 25)),
     ]));
     /* return Text(
       text,

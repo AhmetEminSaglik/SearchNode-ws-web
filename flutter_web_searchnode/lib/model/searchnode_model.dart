@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/node_data_dto.dart';
 
-class SearchNodeResponsive with ChangeNotifier{
-  List<NodeDataDTO>? nodeDataDTOList=[];
+class SearchNodeResponsive with ChangeNotifier {
+  List<NodeDataDTO>? nodeDataDTOList = [];
 
   SearchNodeResponsive({this.nodeDataDTOList}) {
     if (this.nodeDataDTOList == null) {

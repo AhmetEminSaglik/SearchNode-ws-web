@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/data_info_dto.dart';
 
-class NodeDataDTO with ChangeNotifier{
+class NodeDataDTO with ChangeNotifier {
   int? deep;
   int? nextDirectionsTotalValueNumber;
   String? locationAddress;

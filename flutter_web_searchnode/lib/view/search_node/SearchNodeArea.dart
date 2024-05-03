@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/data_info_dto.dart';
 import 'package:flutter_web_searchnode/model/node_data_dto.dart';
-import 'package:flutter_web_searchnode/product/CircularShapeValue.dart';
+import 'package:flutter_web_searchnode/product/CustomCircularShapeValue.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -122,9 +122,9 @@ class SearchNodeArea extends StatelessWidget {
             ),*/
             Center(
                 child: CustomCircularShapeIntValue(
-              value: _getDataInfoNo(dataInfo),
-              color: Colors.white,backgroundColor: Colors.black
-            )),
+                    value: _getDataInfoNo(dataInfo),
+                    color: Colors.white,
+                    backgroundColor: Colors.black)),
             Row(
               children: [
                 _getSubItemTextKey(text: "Index : "),
@@ -164,8 +164,6 @@ class SearchNodeArea extends StatelessWidget {
   SizedBox _getHeightSpace([double height = 5]) => SizedBox(height: height);
 
   int _getDataInfoNo(DataInfoDTO dataInfo) => (dataInfo.index! + 1);
-
-
 
   Widget _getSubItemTextKey(
       {required String text, Color color = Colors.black}) {
