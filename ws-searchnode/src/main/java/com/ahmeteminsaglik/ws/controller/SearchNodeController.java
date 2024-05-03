@@ -30,7 +30,6 @@ public class SearchNodeController {
 //            sn.add("Furkan", "Soyadi Cetin");
 //            sn.add("Furkan", "Soyadi Cetin");
             sn.add("Ahmet Emin", "");
-            sn.
         }
 
         SearchNodeDTO<String> dto = SearchNodeMapper.toDTO(sn);

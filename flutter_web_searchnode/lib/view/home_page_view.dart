@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/product/CircularShapeValue.dart';
-import 'package:flutter_web_searchnode/view/ProcessArea.dart';
-import 'package:flutter_web_searchnode/view/SearchNodeArea.dart';
+import 'package:flutter_web_searchnode/view/process/ProcessArea.dart';
+import 'package:flutter_web_searchnode/view/search_node/SearchNodeArea.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -37,9 +38,9 @@ class HomePage extends StatelessWidget {
         ),
         VerticalDivider(),
         Expanded(
-            child: ListView(children: [
+            child: Column(children: [
           _buildTitleOfDividedArea(title: "PROCESS", color: Colors.lightBlue),
-          ProcessArea(),
+          Expanded(child: ProcessArea()),
         ])),
         VerticalDivider(),
         Expanded(
