@@ -6,7 +6,8 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(const MainApp());
 }
-
+//Consumer'da data aliniyor,
+// providerda fonksiyonlar calistiriliyor.
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 

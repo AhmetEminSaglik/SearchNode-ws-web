@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/data_info_dto.dart';
 import 'package:flutter_web_searchnode/model/node_data_dto.dart';
+import 'package:flutter_web_searchnode/product/CircularShapeValue.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -94,7 +95,7 @@ class SearchNodeArea extends StatelessWidget {
         ),
         leading: _getSubItemTextKey(text: "${index + 1}-) "),
         //_getCircularShapeIntValue(index + 1, Colors.blue),
-        trailing: _getCircularShapeIntValue(
+        trailing: CustomCircularShapeIntValue(
             value: nodeData.listDataInfoDTO!.length, color: Colors.black),
         // leading: _getCircularShapeIntValue(index + 1),
         // trailing: _getCircularShapeIntValue(nodeData.listDataInfoDTO!.length),
@@ -120,7 +121,7 @@ class SearchNodeArea extends StatelessWidget {
               ],
             ),*/
             Center(
-                child: _getCircularShapeIntValue(
+                child: CustomCircularShapeIntValue(
               value: _getDataInfoNo(dataInfo),
               color: Colors.white,backgroundColor: Colors.black
             )),
@@ -164,21 +165,7 @@ class SearchNodeArea extends StatelessWidget {
 
   int _getDataInfoNo(DataInfoDTO dataInfo) => (dataInfo.index! + 1);
 
-  Container _getCircularShapeIntValue(
-      {required int value,
-      Color color = Colors.black,
-      Color backgroundColor = Colors.white}) {
-    return Container(
-      width: 30,
-      height: 30,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          color: backgroundColor, borderRadius: BorderRadius.circular(50)),
-      child: Text("$value",
-          style: TextStyle(
-              fontSize: 20, color: color, fontWeight: FontWeight.bold)),
-    );
-  }
+
 
   Widget _getSubItemTextKey(
       {required String text, Color color = Colors.black}) {

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_searchnode/product/CircularShapeValue.dart';
 import 'package:flutter_web_searchnode/view/ProcessArea.dart';
 import 'package:flutter_web_searchnode/view/SearchNodeArea.dart';
+import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+      // appBar: _buildAppBar(),
+      body: _buildBody(context),
     );
   }
 
@@ -17,7 +20,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -25,7 +28,9 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               _buildTitleOfDividedArea(
-                  title: "SEARCH NODE ", color: Colors.lightBlue),
+                  title: "SEARCH NODE",
+                  widget: _getCircularValueData(context),
+                  color: Colors.lightBlue),
               Expanded(child: SearchNodeArea()),
             ],
           ),
@@ -34,7 +39,7 @@ class HomePage extends StatelessWidget {
         Expanded(
             child: ListView(children: [
           _buildTitleOfDividedArea(title: "PROCESS", color: Colors.lightBlue),
-              ProcessArea(),
+          ProcessArea(),
         ])),
         VerticalDivider(),
         Expanded(
@@ -50,13 +55,33 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildTitleOfDividedArea(
-      {required String title, required Color color}) {
+      {required String title, required Color color, Widget? widget}) {
+    bool isWidgetNull;
+    widget == null ? isWidgetNull = true : isWidgetNull = false;
     return Card(
         color: color,
         child: Center(
-            child: Text(
-          title,
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            child: Row(
+          mainAxisAlignment: isWidgetNull
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              title,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            isWidgetNull ? Container() : widget!,
+          ],
         )));
+  }
+
+  _getCircularValueData(BuildContext context) {
+    print('AAAAAAAAAAAAAAAA');
+    // SearchNodeAreaViewModel viewModel= Provider.of<SearchNodeAreaViewModel>(context,listen:  false);
+    return Consumer<SearchNodeAreaViewModel>(
+      builder: (context, vm, child) {
+        return CustomCircularShapeIntValue(value: vm.getNodeDataListSize());
+      },
+    );
   }
 }

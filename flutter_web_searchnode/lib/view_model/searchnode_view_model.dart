@@ -10,6 +10,7 @@ class SearchNodeAreaViewModel with ChangeNotifier {
       await retrieveSearchNodeData();
     });
   }
+
   retrieveSearchNodeData() async {
     searchNode = await SearchNodeHttpRequest.getAllSearchNodeData();
     notifyListeners();
@@ -17,5 +18,16 @@ class SearchNodeAreaViewModel with ChangeNotifier {
 
   void clicked(int index) {
     print("${searchNode?.nodeDataDTOList?[index]}");
+  }
+
+  static int counter = 1;
+
+  int getNodeDataListSize() {
+    print('$counter kez geldi');
+    counter++;
+    if (searchNode != null && searchNode!.nodeDataDTOList != null) {
+      return searchNode!.nodeDataDTOList!.length;
+    }
+    return 0;
   }
 }

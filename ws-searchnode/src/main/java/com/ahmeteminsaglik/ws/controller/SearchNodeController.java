@@ -20,13 +20,17 @@ public class SearchNodeController {
 //            for(int i=0;i<100;i++){
 //                sn.add(i+"");
 //            }
-            sn.add("Furkan", "Akgun'de calisiyor");
-            sn.add("Ahmet", "Ilk ismim2");
-            sn.add("Ahmet", "Ilk ismim");
+//            sn.add("Furkan", "Akgun'de calisiyor");
+            sn.add("AES", "AES BIGGER");
+            sn.add("aes", "aes smaller");
+            sn.add("Ahmet", "");
+            sn.add("Ahmet", "fake data");
+            sn.add("Ahmet", "fake data");
             sn.add("Ahmet", "Ilk ismim");
 //            sn.add("Furkan", "Soyadi Cetin");
 //            sn.add("Furkan", "Soyadi Cetin");
             sn.add("Ahmet Emin", "");
+            sn.
         }
 
         SearchNodeDTO<String> dto = SearchNodeMapper.toDTO(sn);
