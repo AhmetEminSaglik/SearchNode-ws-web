@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
 import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
@@ -12,11 +14,14 @@ class ResultArea extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        CustomElevatedButton(
-            text: "Clear Logs",
-            function: () {
-              _clearLog(context);
-            }),
+        HeightSpace(),
+        Center(
+          child: CustomElevatedButton(
+              text: "Clear Logs",
+              function: () {
+                _clearLog(context);
+              }),
+        ),
         ListView(
           shrinkWrap: true,
           children: [
