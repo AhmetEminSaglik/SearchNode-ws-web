@@ -1,6 +1,6 @@
 package com.ahmeteminsaglik.ws.controller;
 
-import com.ahmeteminsaglik.ws.business.abstracts.StackableLoggerQueue;
+import com.ahmeteminsaglik.ws.business.abstracts.StackableLogger;
 import com.ahmeteminsaglik.ws.dataaccess.abstracts.SearchNodeInitializer;
 import com.ahmeteminsaglik.ws.mapper.SearchNodeMapper;
 import com.ahmeteminsaglik.ws.model.SearchNodeDTO;
@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,13 +19,13 @@ import java.util.Map;
 @CrossOrigin
 public class SearchNodeController {
 
-    private StackableLoggerQueue loggerQueue;
+    private StackableLogger stackableLogger;
 
     private static final Logger log = LoggerFactory.getLogger(SearchNodeController.class);
 
     @Autowired
-    public SearchNodeController(StackableLoggerQueue loggerQueue) {
-        this.loggerQueue = loggerQueue;
+    public SearchNodeController(StackableLogger stackableLogger) {
+        this.stackableLogger = stackableLogger;
     }
 
     SearchNode<String> sn = SearchNodeInitializer.getSearchNode();
@@ -34,7 +33,8 @@ public class SearchNodeController {
     @GetMapping()
 //    public ResponseEntity<SearchNodeDTO<String>> getSearchNodeDTO() {
     public SearchNodeDTO<String> getSearchNodeDTO() {
-        loggerQueue.add("All SearchNode data is retrieved");
+//        stackableLogger.add("All SearchNode data is retrieved");
+        log.info("All SearchNode data is retrieved");
         if (sn.getTotalItemNumber() == 0) {
 //            for(int i=0;i<100;i++){
 //                sn.add(i+"");
@@ -58,8 +58,9 @@ public class SearchNodeController {
 
     @PostMapping()
     public Result addData(@RequestBody Map<String, String> requestMap) {
-        loggerQueue.add("\"" + requestMap.get("data") + ":" + "explanation" + "\" is added.");
-        log.info("Data ve explanation SearchNode'a eklencek --> Data : " + requestMap.get("data") + " /  explanation : " + requestMap.get("explanation"));
+        stackableLogger.add("Saved Process:\n Data :[\"" + requestMap.get("data") + "\"]; Explanation :[\"" + requestMap.get("explanation") + "\"]");
+//        stackableLogger.add("Saved Process: \"" + requestMap.get("data") +":"+ requestMap.get("explanation") + "\"");
+        log.info(stackableLogger.peek());
         sn.add(requestMap.get("data"), requestMap.get("explanation"));
         return new SuccessDataResult<>("Data is added");
     }
