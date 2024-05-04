@@ -3,7 +3,7 @@ import 'package:flutter_web_searchnode/http/searchnode_http_request.dart';
 import 'package:flutter_web_searchnode/model/searchnode_model.dart';
 
 class SearchNodeAreaViewModel with ChangeNotifier {
-  SearchNodeResponsive? searchNode;
+   SearchNodeResponsive? searchNode;
 
   SearchNodeAreaViewModel() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -12,7 +12,9 @@ class SearchNodeAreaViewModel with ChangeNotifier {
   }
 
   Future<void> retrieveSearchNodeData() async {
+    // if(searchNode?.nodeDataDTOList !=null){
     searchNode = await SearchNodeHttpRequest.getAllSearchNodeData();
+    // }
     notifyListeners();
   }
 
@@ -22,7 +24,7 @@ class SearchNodeAreaViewModel with ChangeNotifier {
   }
 
   clicked(int index) {
-    print("${searchNode?.nodeDataDTOList?[index]}");
+    print("${searchNode?.nodeDataDTOList[index]}");
   }
 
   // static int counter = 1;
@@ -31,7 +33,7 @@ class SearchNodeAreaViewModel with ChangeNotifier {
     // print('$counter kez geldi');
     // counter++;
     if (searchNode != null && searchNode!.nodeDataDTOList != null) {
-      return searchNode!.nodeDataDTOList!.length;
+      return searchNode!.nodeDataDTOList.length;
     }
     return 0;
   }

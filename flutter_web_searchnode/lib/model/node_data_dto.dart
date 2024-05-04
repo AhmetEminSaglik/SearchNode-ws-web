@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/data_info_dto.dart';
 
 class NodeDataDTO with ChangeNotifier {
-  int? deep;
-  int? nextDirectionsTotalValueNumber;
-  String? locationAddress;
-  List<DataInfoDTO>? listDataInfoDTO;
+  late int deep;
+  late int nextDirectionsTotalValueNumber=0;
+  late String locationAddress="";
+  late List<DataInfoDTO> listDataInfoDTO=[];
 
-  NodeDataDTO(
-      {this.deep,
-      this.nextDirectionsTotalValueNumber,
-      this.locationAddress,
-      this.listDataInfoDTO});
+  NodeDataDTO({ required int deep, required  int nextDirectionsTotalValueNumber,
+    required String locationAddress, required List<DataInfoDTO> listDataInfoDTO}) {
+    this.deep = deep;
+    this.nextDirectionsTotalValueNumber = nextDirectionsTotalValueNumber;
+    this.locationAddress = locationAddress;
+    if (listDataInfoDTO != null) {
+      this.listDataInfoDTO = listDataInfoDTO;
+    }
+  }
 
   NodeDataDTO.fromJson(Map<String, dynamic> json) {
     deep = json['deep'];

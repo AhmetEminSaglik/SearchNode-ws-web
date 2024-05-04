@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/node_data_dto.dart';
 
 class SearchNodeResponsive with ChangeNotifier {
-  List<NodeDataDTO>? nodeDataDTOList = [];
+  late List<NodeDataDTO> nodeDataDTOList;
 
-  SearchNodeResponsive({this.nodeDataDTOList}) {
-    if (this.nodeDataDTOList == null) {
-      this.nodeDataDTOList = [];
+  SearchNodeResponsive({required List<NodeDataDTO> nodeDataDTOList}) {
+    if (nodeDataDTOList != null) {
+      this.nodeDataDTOList = nodeDataDTOList;
     }
   }
 
@@ -14,7 +14,7 @@ class SearchNodeResponsive with ChangeNotifier {
     if (json['nodeDataDTOList'] != null) {
       nodeDataDTOList = <NodeDataDTO>[];
       json['nodeDataDTOList'].forEach((v) {
-        nodeDataDTOList!.add(new NodeDataDTO.fromJson(v));
+        nodeDataDTOList.add(new NodeDataDTO.fromJson(v));
       });
     }
   }

@@ -1,10 +1,19 @@
 class DataInfoDTO {
-  String? value;
-  int? index;
-  String? explanation;
-  int? totalSameNum;
+  late String value;
+  late int index;
+  late String explanation;
+  late int totalSameNum;
 
-  DataInfoDTO({this.value, this.index, this.explanation, this.totalSameNum});
+  DataInfoDTO(
+      {required String value,
+      required int index,
+      required String explanation,
+      required int totalSameNum}) {
+    this.value = value;
+    this.index = index;
+    this.explanation = explanation;
+    this.totalSameNum = totalSameNum;
+  }
 
   DataInfoDTO.fromJson(Map<String, dynamic> json) {
     value = json['value'];
