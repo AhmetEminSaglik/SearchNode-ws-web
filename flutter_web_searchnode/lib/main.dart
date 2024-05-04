@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/view/home_page_view.dart';
+import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,8 @@ class MainApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(
               create: (BuildContext context) => SearchNodeAreaViewModel()),
+          ChangeNotifierProvider(
+              create: (BuildContext context) => ResultViewModel()),
         ],
         child: HomePage(),
       ),

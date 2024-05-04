@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/http/SearchNodeHttpRequest.dart';
 import 'package:flutter_web_searchnode/model/searchnode_model.dart';
 
@@ -11,17 +11,17 @@ class SearchNodeAreaViewModel with ChangeNotifier {
     });
   }
 
-  retrieveSearchNodeData() async {
+  Future<void> retrieveSearchNodeData() async {
     searchNode = await SearchNodeHttpRequest.getAllSearchNodeData();
     notifyListeners();
   }
 
-  void addSearchNode(String data, String explanation) async{
+  Future<void> addSearchNode(String data, String explanation) async {
     await SearchNodeHttpRequest.addSearchNodeData(data, explanation);
     await retrieveSearchNodeData();
   }
 
-  void clicked(int index) {
+  clicked(int index) {
     print("${searchNode?.nodeDataDTOList?[index]}");
   }
 

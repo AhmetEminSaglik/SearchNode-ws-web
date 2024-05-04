@@ -9,14 +9,14 @@ import 'package:http/http.dart' as http;
 
 class SearchNodeHttpRequest {
   static const String _classUrl = "/searchnode";
-  static String _baseUrl = BaseHttpConfig.baseUrl+_classUrl;
+  static String _baseUrl = BaseHttpConfig.baseUrl + _classUrl;
 
   static Future<SearchNodeResponsive> getAllSearchNodeData() async {
     Uri url = Uri.parse(_baseUrl);
     print("Link : $url");
     var respond = await http.get(url, headers: HttpUtil.header);
     Map<String, dynamic> map = json.decode(respond.body);
-    print("veri cekildi $map" );
+    print("veri cekildi $map");
     return RepositorySearchNode.parseToSearchNode(map);
   }
 
@@ -29,8 +29,8 @@ class SearchNodeHttpRequest {
     };
     print("Map : $requestData");
     print("Link : $url");
-    var respond =
-        await http.post(url, headers: HttpUtil.header, body: json.encode(requestData));
+    var respond = await http.post(url,
+        headers: HttpUtil.header, body: json.encode(requestData));
     Map<String, dynamic> map = json.decode(respond.body);
     return RepositorySearchNode.parseToSearchNode(map);
   }

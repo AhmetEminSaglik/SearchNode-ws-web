@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/product/CustomCircularShapeValue.dart';
 import 'package:flutter_web_searchnode/view/process/ProcessArea.dart';
+import 'package:flutter_web_searchnode/view/result/ResultArea.dart';
 import 'package:flutter_web_searchnode/view/search_node/SearchNodeArea.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
@@ -25,8 +26,7 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          child: Column(
-            children: [
+          child: Column(children: [
               _buildTitleOfDividedArea(
                   title: "SEARCH NODE",
                   widget: _getCircularValueData(context),
@@ -43,12 +43,9 @@ class HomePage extends StatelessWidget {
         ])),
         VerticalDivider(),
         Expanded(
-            child: ListView(children: [
+            child: Column(children: [
           _buildTitleOfDividedArea(title: "RESULT", color: Colors.orange),
-          Container(color: Colors.yellow, child: Center(child: Text("Ahmet"))),
-          Container(color: Colors.blue, child: Center(child: Text("Ahmet"))),
-          Container(
-              color: Colors.greenAccent, child: Center(child: Text("Ahmet"))),
+          Expanded(child: ResultArea()),
         ])),
       ],
     );
@@ -76,8 +73,6 @@ class HomePage extends StatelessWidget {
   }
 
   _getCircularValueData(BuildContext context) {
-    // print('AAAAAAAAAAAAAAAA');
-    // SearchNodeAreaViewModel viewModel= Provider.of<SearchNodeAreaViewModel>(context,listen:  false);
     return Consumer<SearchNodeAreaViewModel>(
       builder: (context, vm, child) {
         return CustomCircularShapeIntValue(value: vm.getNodeDataListSize());

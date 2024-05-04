@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/data_info_dto.dart';
 import 'package:flutter_web_searchnode/model/node_data_dto.dart';
 import 'package:flutter_web_searchnode/product/CustomCircularShapeValue.dart';
+import 'package:flutter_web_searchnode/product/SpaceTools.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -89,7 +90,7 @@ class SearchNodeArea extends StatelessWidget {
                       text: "${nodeData.listDataInfoDTO!.length}"),
                 ],
               ),
-              _getHeightSpace(),
+              HeightSpace(),
             ],
           ),
         ),
@@ -111,7 +112,7 @@ class SearchNodeArea extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _getCustomDivier(),
+            CustomDivider(),
             /*Row(
               children: [
                 _getSubItemTextKey(
@@ -137,14 +138,14 @@ class SearchNodeArea extends StatelessWidget {
                 _getSubItemTextValue(text: "${dataInfo.totalSameNum!}")
               ],
             ),
-            _getHeightSpace(),
+            HeightSpace(),
             Row(
               children: [
                 _getSubItemTextKey(text: "Explanation : "),
                 _getSubItemTextValue(text: dataInfo.explanation!),
               ],
             ),
-            _getHeightSpace()
+            HeightSpace()
           ],
         ),
       ),
@@ -161,7 +162,7 @@ class SearchNodeArea extends StatelessWidget {
     );
   }
 
-  SizedBox _getHeightSpace([double height = 5]) => SizedBox(height: height);
+
 
   int _getDataInfoNo(DataInfoDTO dataInfo) => (dataInfo.index! + 1);
 
@@ -183,16 +184,5 @@ class SearchNodeArea extends StatelessWidget {
             fontWeight: isBold ? FontWeight.bold : null));
   }
 
-  Widget _getCustomDivier() {
-    return Column(
-      children: [
-        Container(
-          height: 3,
-          width: double.infinity,
-          color: Colors.black,
-        ),
-        _getHeightSpace(10)
-      ],
-    );
-  }
+
 }
