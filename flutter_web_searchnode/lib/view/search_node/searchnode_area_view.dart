@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/data_info_dto.dart';
 import 'package:flutter_web_searchnode/model/node_data_dto.dart';
-import 'package:flutter_web_searchnode/product/CustomCircularShapeValue.dart';
-import 'package:flutter_web_searchnode/product/SpaceTools.dart';
+import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart';
+import 'package:flutter_web_searchnode/product/space_tools.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_searchnode/product/CustomCircularShapeValue.dart';
-import 'package:flutter_web_searchnode/view/process/ProcessArea.dart';
-import 'package:flutter_web_searchnode/view/result/ResultArea.dart';
-import 'package:flutter_web_searchnode/view/search_node/SearchNodeArea.dart';
+import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart';
+import 'package:flutter_web_searchnode/view/process/process_area_view.dart';
+import 'package:flutter_web_searchnode/view/result/result_area_view.dart';
+import 'package:flutter_web_searchnode/view/search_node/searchnode_area_view.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 

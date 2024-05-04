@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:core';
 
-import 'package:flutter_web_searchnode/http/BaseHttpConfig.dart';
+import 'package:flutter_web_searchnode/http/base_http_config.dart';
 import 'package:flutter_web_searchnode/http/http_util.dart';
 import 'package:flutter_web_searchnode/model/searchnode_model.dart';
-import 'package:flutter_web_searchnode/repository/SearchNodeRepository.dart';
+import 'package:flutter_web_searchnode/repository/searchnode_repository.dart';
 import 'package:http/http.dart' as http;
 
 class SearchNodeHttpRequest {

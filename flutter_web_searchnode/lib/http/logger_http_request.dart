@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:core';
 
-import 'package:flutter_web_searchnode/http/BaseHttpConfig.dart';
+import 'package:flutter_web_searchnode/http/base_http_config.dart';
 import 'package:flutter_web_searchnode/http/http_util.dart';
 import 'package:http/http.dart' as http;
 

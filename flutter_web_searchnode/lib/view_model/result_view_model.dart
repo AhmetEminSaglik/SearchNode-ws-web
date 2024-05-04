@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_searchnode/http/LoggerHttpRequest.dart';
+import 'package:flutter_web_searchnode/http/logger_http_request.dart';
 
 class ResultViewModel with ChangeNotifier {
   List<String> logs = [];

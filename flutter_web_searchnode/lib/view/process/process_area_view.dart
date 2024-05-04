@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_searchnode/view/process/DeleteTab.dart';
-import 'package:flutter_web_searchnode/view/process/SaveTab.dart';
-import 'package:flutter_web_searchnode/view/process/UpdateTab.dart';
+import 'package:flutter_web_searchnode/view/process/delete_tab_view.dart';
+import 'package:flutter_web_searchnode/view/process/save_tab_view.dart';
+import 'package:flutter_web_searchnode/view/process/update_tab_view.dart';
 
 class ProcessArea extends StatelessWidget {
   @override
