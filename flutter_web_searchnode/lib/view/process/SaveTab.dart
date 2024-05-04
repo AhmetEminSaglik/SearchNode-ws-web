@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/product/CustomTextStyle.dart';
+import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
+import 'package:provider/provider.dart';
 
 class SaveTab extends StatelessWidget {
-  TextEditingController controllerData = TextEditingController();
-  TextEditingController controllerExplanation = TextEditingController();
+  TextEditingController controllerData = TextEditingController(text: "Test 1");
+  TextEditingController controllerExplanation = TextEditingController(text: "Test 2");
 
   // TextEditingController dataController = TextEditingController();
 
@@ -18,7 +20,7 @@ class SaveTab extends StatelessWidget {
           padding: const EdgeInsets.only(right: 25),
           child: ButtonBar(
             children: [
-              _getSaveButton("Save"),
+              _getSaveButton(context, "Save"),
             ],
           ),
         ),
@@ -68,12 +70,17 @@ class SaveTab extends StatelessWidget {
     );
   }
 
-  Widget _getSaveButton(String text) {
+  Widget _getSaveButton(BuildContext context, String text) {
     return CustomElevatedButton(
         text: text,
         function: () {
           print("controllerData : ${controllerData.text}");
           print("controllerExplanation : ${controllerExplanation.text}");
+          SearchNodeAreaViewModel vm =
+              Provider.of<SearchNodeAreaViewModel>(context, listen: false);
+          vm.addSearchNode(controllerData.text, controllerExplanation.text);
         });
+
+
   }
 }

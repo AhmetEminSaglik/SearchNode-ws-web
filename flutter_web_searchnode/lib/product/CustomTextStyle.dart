@@ -35,11 +35,11 @@ Widget CustomElevatedButton(
 
 ButtonStyle CustomButtonStyle() {
   return ButtonStyle(
-    backgroundColor: MaterialStateColor.resolveWith((states) => Colors.red),
-    foregroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
-    textStyle:
-        MaterialStateProperty.resolveWith((states) => TextStyle(fontSize: 17)),
-    minimumSize: MaterialStateProperty.resolveWith((states) => Size(150,40)),
-     maximumSize: MaterialStateProperty.resolveWith((states) => Size(200,50))
-  );
+      backgroundColor: MaterialStateColor.resolveWith((states) => Colors.red),
+      foregroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
+      textStyle: MaterialStateProperty.resolveWith(
+          (states) => TextStyle(fontSize: 17)),
+      minimumSize: MaterialStateProperty.resolveWith((states) => Size(150, 40)),
+      maximumSize:
+          MaterialStateProperty.resolveWith((states) => Size(200, 50)));
 }

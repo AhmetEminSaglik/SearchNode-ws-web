@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
   }
 
   _getCircularValueData(BuildContext context) {
-    print('AAAAAAAAAAAAAAAA');
+    // print('AAAAAAAAAAAAAAAA');
     // SearchNodeAreaViewModel viewModel= Provider.of<SearchNodeAreaViewModel>(context,listen:  false);
     return Consumer<SearchNodeAreaViewModel>(
       builder: (context, vm, child) {
