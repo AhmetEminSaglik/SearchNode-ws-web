@@ -36,11 +36,20 @@ public class SearchNodeController {
 //        stackableLogger.add("All SearchNode data is retrieved");
         log.info("All SearchNode data is retrieved");
         if (sn.getTotalItemNumber() == 0) {
+            sn.add("aa");
+            sn.add("b");
+            sn.add("bbb");
+//            sn.add("bb");
+//            sn.add("aaa");
+//            sn.add("aa");
+//            sn.add("a");
+//            sn.add("aaaa");
+//            sn.add("aaaa");
 //            for(int i=0;i<100;i++){
 //                sn.add(i+"");
 //            }
 //            sn.add("Furkan", "Akgun'de calisiyor");
-            sn.add("AES", "AES BIGGER");
+//            sn.add("AES", "AES BIGGER");
 //            sn.add("aes", "aes smaller");
 //            sn.add("Ahmet", "");
 //            sn.add("Ahmet", "fake data");
@@ -64,6 +73,4 @@ public class SearchNodeController {
         sn.add(requestMap.get("data"), requestMap.get("explanation"));
         return new SuccessDataResult<>("Data is added");
     }
-
-
 }

@@ -5,7 +5,7 @@ import com.ahmeteminsaglik.ws.utility.ListUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeDataDTO<T> {
+public class NodeDataDTO<T> implements Comparable {
     private int deep;
     private int nextDirectionsTotalValueNumber;
     private String locationAddress;
@@ -56,4 +56,9 @@ public class NodeDataDTO<T> {
     }
 
 
+    @Override
+    public int compareTo(Object o) {
+        NodeDataDTO other = (NodeDataDTO) o;
+        return this.locationAddress.compareTo(other.locationAddress);
+    }
 }

@@ -2,6 +2,8 @@ package com.ahmeteminsaglik.ws.model;
 
 import com.ahmeteminsaglik.ws.utility.ListUtil;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class SearchNodeDTO<T> {
@@ -14,6 +16,7 @@ public class SearchNodeDTO<T> {
     }
 
     public void setNodeDataDTOList(List<NodeDataDTO<T>> nodeDataDTOList) {
+        Collections.sort(nodeDataDTOList);
         this.nodeDataDTOList = nodeDataDTOList;
     }
 
