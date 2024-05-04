@@ -8,7 +8,8 @@ import 'package:flutter_web_searchnode/repository/SearchNodeRepository.dart';
 import 'package:http/http.dart' as http;
 
 class SearchNodeHttpRequest {
-  static String _baseUrl = BaseHttpConfig.baseUrl;
+  static const String _classUrl = "/searchnode";
+  static String _baseUrl = BaseHttpConfig.baseUrl+_classUrl;
 
   static Future<SearchNodeResponsive> getAllSearchNodeData() async {
     Uri url = Uri.parse(_baseUrl);

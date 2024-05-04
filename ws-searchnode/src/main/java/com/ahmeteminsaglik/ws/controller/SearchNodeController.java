@@ -1,5 +1,6 @@
 package com.ahmeteminsaglik.ws.controller;
 
+import com.ahmeteminsaglik.ws.business.abstracts.StackableLoggerQueue;
 import com.ahmeteminsaglik.ws.dataaccess.abstracts.SearchNodeInitializer;
 import com.ahmeteminsaglik.ws.mapper.SearchNodeMapper;
 import com.ahmeteminsaglik.ws.model.SearchNodeDTO;
@@ -8,20 +9,32 @@ import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping
+@RequestMapping("/searchnode")
 @CrossOrigin
 public class SearchNodeController {
+
+    private StackableLoggerQueue loggerQueue;
+
     private static final Logger log = LoggerFactory.getLogger(SearchNodeController.class);
+
+    @Autowired
+    public SearchNodeController(StackableLoggerQueue loggerQueue) {
+        this.loggerQueue = loggerQueue;
+    }
+
     SearchNode<String> sn = SearchNodeInitializer.getSearchNode();
 
     @GetMapping()
 //    public ResponseEntity<SearchNodeDTO<String>> getSearchNodeDTO() {
     public SearchNodeDTO<String> getSearchNodeDTO() {
+        loggerQueue.add("All SearchNode data is retrieved");
         if (sn.getTotalItemNumber() == 0) {
 //            for(int i=0;i<100;i++){
 //                sn.add(i+"");
@@ -45,13 +58,11 @@ public class SearchNodeController {
 
     @PostMapping()
     public Result addData(@RequestBody Map<String, String> requestMap) {
+        loggerQueue.add("\"" + requestMap.get("data") + ":" + "explanation" + "\" is added.");
         log.info("Data ve explanation SearchNode'a eklencek --> Data : " + requestMap.get("data") + " /  explanation : " + requestMap.get("explanation"));
-//        for (int i = 0; i < 30_000; i++) {
-//            sn.add("0", i + " kez eklendi");
-//            log.info("Data ekleniyor : "+i);
-//        }
         sn.add(requestMap.get("data"), requestMap.get("explanation"));
         return new SuccessDataResult<>("Data is added");
     }
+
 
 }
