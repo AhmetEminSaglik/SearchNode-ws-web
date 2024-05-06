@@ -36,7 +36,7 @@ class SaveTab extends StatelessWidget {
           // await Provider.of<SearchNodeAreaViewModel>(context, listen: false)
           //     .addSearchNode(controllerData.text, controllerExplanation.text);
           await Provider.of<SaveTabViewModel>(context, listen: false)
-              .saveData(context);
+              .saveData();
         });
   }
 

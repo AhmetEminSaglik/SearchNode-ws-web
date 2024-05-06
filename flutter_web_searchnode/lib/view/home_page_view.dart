@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart';
+import 'package:flutter_web_searchnode/tools/SingletonBuildContext.dart';
+import 'package:flutter_web_searchnode/tools/locator.dart';
 import 'package:flutter_web_searchnode/view/process/process_area_view.dart';
 import 'package:flutter_web_searchnode/view/result/result_area_view.dart';
 import 'package:flutter_web_searchnode/view/search_node/searchnode_area_view.dart';
@@ -8,8 +10,19 @@ import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
+  static bool initialized = false;
+
+  _initializeBuildContextLocator(BuildContext context) {
+    if (!initialized) {
+      locator.registerSingleton<SingletonBuildContext>(
+          SingletonBuildContext(context: context));
+      initialized = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    _initializeBuildContextLocator(context);
     return Scaffold(
       // appBar: _buildAppBar(),
       body: _buildBody(context),

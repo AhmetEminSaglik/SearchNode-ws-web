@@ -1,10 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/product/respond_data.dart';
+import 'package:flutter_web_searchnode/tools/SingletonBuildContext.dart';
+import 'package:flutter_web_searchnode/tools/locator.dart';
 import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
 abstract class CommonTabProcessViewModel with ChangeNotifier {
+  BuildContext _context = locator<SingletonBuildContext>().context;
+
   String _msg = "";
   @protected
   final invalidCharLengthErrMsg = "Length must be at least 1 character.";
@@ -25,14 +30,14 @@ abstract class CommonTabProcessViewModel with ChangeNotifier {
   }
 
   @protected
-  retrieveAllData(BuildContext context) async {
-    await Provider.of<SearchNodeAreaViewModel>(context, listen: false)
+  retrieveAllData() async {
+    await Provider.of<SearchNodeAreaViewModel>(_context, listen: false)
         .retrieveSearchNodeData();
-    _updateResultLog(context);
+    _updateResultLog();
   }
 
   @protected
-  bool isDataValid(TextEditingController controller){
+  bool isDataValid(TextEditingController controller) {
     bool result = controller.text.isNotEmpty;
     if (!result) {
       String errMsg = invalidCharLengthErrMsg;
@@ -41,11 +46,6 @@ abstract class CommonTabProcessViewModel with ChangeNotifier {
     }
     return result;
   }
-
-/*  @protected
-  void updateMsg() {
-    notifyListeners();
-  }*/
 
   @protected
   void clearTextField(TextEditingController controller) {
@@ -61,8 +61,10 @@ abstract class CommonTabProcessViewModel with ChangeNotifier {
   }
 
   @protected
-  _updateResultLog(BuildContext context) async {
-    await Provider.of<ResultViewModel>(context, listen: false)
+  _updateResultLog() async {
+    // BuildContext _context=locator<SingletonBuildContext>().context;
+    await Provider.of<ResultViewModel>(_context, listen: false)
         .updateResultLogs();
+    // print("context  == _context ${context==_context}");
   }
 }

@@ -21,7 +21,7 @@ class DeleteTab extends StatelessWidget {
         CustomButtonLocation_BottomRight(CustomElevatedButton(
             text: "Delete",
             function: () async {
-              vm.removeData(context);
+              vm.removeData();
               // DeleteTabViewModel vm =
               //     await Provider.of<DeleteTabViewModel>(context, listen: false);
 

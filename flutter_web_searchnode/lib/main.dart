@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_searchnode/tools/SingletonBuildContext.dart';
+import 'package:flutter_web_searchnode/tools/locator.dart';
 import 'package:flutter_web_searchnode/view/home_page_view.dart';
 import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
@@ -27,7 +29,8 @@ class MainApp extends StatelessWidget {
           ChangeNotifierProvider(
               create: (BuildContext context) => SaveTabViewModel()),
           ChangeNotifierProvider(
-              create: (BuildContext context) => DeleteTabViewModel(),)
+            create: (BuildContext context) => DeleteTabViewModel(),
+          )
         ],
         child: HomePage(),
       ),

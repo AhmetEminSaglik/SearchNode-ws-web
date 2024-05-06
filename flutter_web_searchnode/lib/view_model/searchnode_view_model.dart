@@ -3,7 +3,7 @@ import 'package:flutter_web_searchnode/http/searchnode_http_request.dart';
 import 'package:flutter_web_searchnode/model/searchnode_model.dart';
 
 class SearchNodeAreaViewModel with ChangeNotifier {
-   SearchNodeResponsive? searchNode;
+  SearchNodeResponsive? searchNode;
 
   SearchNodeAreaViewModel() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {

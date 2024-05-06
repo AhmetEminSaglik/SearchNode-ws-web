@@ -5,11 +5,11 @@ import 'package:flutter_web_searchnode/view_model/tab/common_tab_process_view_mo
 class DeleteTabViewModel extends CommonTabProcessViewModel {
   TextEditingController txtEditController = TextEditingController();
 
-  void removeData(BuildContext context) async {
+  void removeData() async {
     if (isDataValid(txtEditController)) {
       await sendRequest();
       clearTextField(txtEditController);
-      retrieveAllData(context);
+      retrieveAllData();
     }
   }
 
