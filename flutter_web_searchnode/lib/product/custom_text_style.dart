@@ -8,8 +8,8 @@ TextStyle CustomTextStyleForResultMsg(bool success) {
   return TextStyle(fontSize: 20, color: success ?   Colors.green : Colors.red);
 }
 
-TextStyle CustomTextStyleForHeaderLabel() {
-  return TextStyle(fontSize: 30, color: Colors.pink);
+TextStyle CustomTextStyleForHeaderLabel({Color color=Colors.black}) {
+  return TextStyle(fontSize: 30, color: color);
 }
 
 TextStyle CustomTextStyleForInputLabel() {

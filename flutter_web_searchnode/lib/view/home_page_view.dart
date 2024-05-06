@@ -3,6 +3,7 @@ import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart'
 import 'package:flutter_web_searchnode/view/process/process_area_view.dart';
 import 'package:flutter_web_searchnode/view/result/result_area_view.dart';
 import 'package:flutter_web_searchnode/view/search_node/searchnode_area_view.dart';
+import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -26,10 +27,11 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          child: Column(children: [
+          child: Column(
+            children: [
               _buildTitleOfDividedArea(
                   title: "SEARCH NODE",
-                  widget: _getCircularValueData(context),
+                  widget: _getSearchNodeListLengthInCircularWidget(context),
                   color: Colors.lightBlue),
               Expanded(child: SearchNodeArea()),
             ],
@@ -44,7 +46,10 @@ class HomePage extends StatelessWidget {
         VerticalDivider(),
         Expanded(
             child: Column(children: [
-          _buildTitleOfDividedArea(title: "RESULT", color: Colors.orange),
+          _buildTitleOfDividedArea(
+              title: "RESULT",
+              widget: _getLogsLengthInCircularWidget(context),
+              color: Colors.orange),
           Expanded(child: ResultArea()),
         ])),
       ],
@@ -59,23 +64,37 @@ class HomePage extends StatelessWidget {
         color: color,
         child: Center(
             child: Row(
-          mainAxisAlignment: isWidgetNull
-              ? MainAxisAlignment.center
-              : MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: isWidgetNull
+          //     ? MainAxisAlignment.center
+
+          // : MainAxisAlignment.spaceEvenly,
           children: [
             Text(
               title,
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            isWidgetNull ? Container() : widget!,
+            isWidgetNull == false
+                ? Row(
+                    children: [SizedBox(width: 25), widget!],
+                  )
+                : Container(),
           ],
         )));
   }
 
-  _getCircularValueData(BuildContext context) {
+  _getSearchNodeListLengthInCircularWidget(BuildContext context) {
     return Consumer<SearchNodeAreaViewModel>(
       builder: (context, vm, child) {
         return CustomCircularShapeIntValue(value: vm.getNodeDataListSize());
+      },
+    );
+  }
+
+  _getLogsLengthInCircularWidget(BuildContext context) {
+    return Consumer<ResultViewModel>(
+      builder: (context, vm, child) {
+        return CustomCircularShapeIntValue(value: vm.logs.length);
       },
     );
   }

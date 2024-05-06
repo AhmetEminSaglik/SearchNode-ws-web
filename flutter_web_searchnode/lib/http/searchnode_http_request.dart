@@ -21,7 +21,7 @@ class SearchNodeHttpRequest {
     return RepositorySearchNode.parseToSearchNode(map);
   }
 
-  static Future<SearchNodeResponsive> addSearchNodeData(
+  static Future<RespondDataResult> addSearchNodeData(
       String data, String explanation) async {
     Uri url = Uri.parse(_baseUrl);
     Map<String, dynamic> requestData = {
@@ -32,8 +32,11 @@ class SearchNodeHttpRequest {
     print("URL : $url");
     var respond = await http.post(url,
         headers: HttpUtil.header, body: json.encode(requestData));
-    Map<String, dynamic> map = json.decode(respond.body);
-    return RepositorySearchNode.parseToSearchNode(map);
+    // Map<String, dynamic> map = json.decode(respond.body);
+    // return RepositorySearchNode.parseToSearchNode(map);
+    RespondDataResult respondDataResult =
+        RespondDataResult.fromJson(json.decode(respond.body));
+    return respondDataResult;
   }
 
   static Future<RespondDataResult> removeData(String data) async {

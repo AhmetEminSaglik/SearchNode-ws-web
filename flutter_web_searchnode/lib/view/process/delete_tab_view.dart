@@ -11,10 +11,9 @@ class DeleteTab extends StatelessWidget {
   Widget build(BuildContext context) {
     DeleteTabViewModel vm =
         Provider.of<DeleteTabViewModel>(context, listen: false);
-
     return Column(
       children: [
-        CustomTabTitle(text: "Deleting Process"),
+        CustomTabTitle(text: "Deleting Process", color: Colors.red),
         InputFieldWithTitle(
             title: "Data",
             controller: vm.txtEditController,
@@ -41,7 +40,7 @@ class DeleteTab extends StatelessWidget {
   Widget _getResultMsg() {
     return Consumer<DeleteTabViewModel>(
       builder: (context, vm, child) {
-        if (vm.msg.isNotEmpty && vm.isSuccess!=null) {
+        if (vm.msg.isNotEmpty && vm.isSuccess != null) {
           return Text(
             vm.msg,
             style: CustomTextStyleForResultMsg(vm.isSuccess),

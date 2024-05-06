@@ -7,34 +7,24 @@ import 'package:flutter_web_searchnode/view_model/tab/save_tab_view_model.dart';
 import 'package:provider/provider.dart';
 
 class SaveTab extends StatelessWidget {
-  TextEditingController controllerData = TextEditingController(text: "a");
-  TextEditingController controllerExplanation =
-      TextEditingController(text: "Test 2");
-
   // TextEditingController dataController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    SaveTabViewModel vm = Provider.of<SaveTabViewModel>(context, listen: false);
+    return Column(
       children: [
-        CustomTabTitle(text: "Saving Process"),
+        CustomTabTitle(text: "Saving Process", color: Colors.blue),
         InputFieldWithTitle(
             title: "Data",
-            controller: controllerData,
+            controller: vm.controllerData,
             hintText: "Type to add Data"),
         InputFieldWithTitle(
             title: "Examination",
-            controller: controllerExplanation,
+            controller: vm.controllerExplanation,
             hintText: "Type to add Explanation"),
-        CustomButtonLocation_BottomRight(_getSaveButton(context,
-            "Save")) /*    Padding(
-          padding: const EdgeInsets.only(right: 25),
-          child: ButtonBar(
-            children: [
-              _getSaveButton(context, "Save"),
-            ],
-          ),
-        ),*/
+        CustomButtonLocation_BottomRight(_getSaveButton(context, "Save")),
+        _getResultMsg(),
       ],
     );
   }
@@ -45,10 +35,22 @@ class SaveTab extends StatelessWidget {
         function: () async {
           // await Provider.of<SearchNodeAreaViewModel>(context, listen: false)
           //     .addSearchNode(controllerData.text, controllerExplanation.text);
-          await Provider.of<SaveTabViewModel>(context, listen: false).saveData(
-              context: context,
-              data: controllerData.text,
-              explanation: controllerExplanation.text);
+          await Provider.of<SaveTabViewModel>(context, listen: false)
+              .saveData(context);
         });
+  }
+
+  Widget _getResultMsg() {
+    return Consumer<SaveTabViewModel>(
+      builder: (context, vm, child) {
+        if (vm.msg.isNotEmpty && vm.isSuccess != null) {
+          return Text(
+            vm.msg,
+            style: CustomTextStyleForResultMsg(vm.isSuccess),
+          );
+        }
+        return Container();
+      },
+    );
   }
 }
