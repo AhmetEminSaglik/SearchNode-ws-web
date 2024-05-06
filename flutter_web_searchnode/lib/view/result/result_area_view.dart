@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
 import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
@@ -16,7 +17,6 @@ class ResultArea extends StatelessWidget {
       children: [
         HeightSpace(),
         _getClearLogBtn(context),
-
         ListView(
           shrinkWrap: true,
           children: [
@@ -31,15 +31,28 @@ class ResultArea extends StatelessWidget {
   Widget _getClearLogBtn(BuildContext context) {
     return Column(
       children: [
-        Center(
+        CustomButtonLocation_BottomCenter(
+          Center(
             child: CustomElevatedButton(
                 text: "Clear Logs",
                 function: () {
                   _clearLog(context);
                 }),
           ),
+        ),
+        /*
+        Center(
+          child: CustomElevatedButton(
+              text: "Clear Logs",
+              function: () {
+                _clearLog(context);
+              }),
+        ),*/
+
         HeightSpace(7),
-        Provider.of<ResultViewModel>(context).logs.isNotEmpty ? CustomDivider():Container(),
+        Provider.of<ResultViewModel>(context).logs.isNotEmpty
+            ? CustomDivider()
+            : Container(),
       ],
     );
   }

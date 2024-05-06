@@ -18,10 +18,10 @@ class SearchNodeAreaViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addSearchNode(String data, String explanation) async {
+/*  Future<void> addSearchNode(String data, String explanation) async {
     await SearchNodeHttpRequest.addSearchNodeData(data, explanation);
     await retrieveSearchNodeData();
-  }
+  }*/
 
   clicked(int index) {
     print("${searchNode?.nodeDataDTOList[index]}");

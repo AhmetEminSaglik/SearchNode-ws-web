@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_searchnode/product/custom_common_tab_widget.dart';
+import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
+import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
-import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
+import 'package:flutter_web_searchnode/view_model/tab/save_tab_view_model.dart';
 import 'package:provider/provider.dart';
 
 class SaveTab extends StatelessWidget {
-  TextEditingController controllerData = TextEditingController(text: "Test 1");
+  TextEditingController controllerData = TextEditingController(text: "a");
   TextEditingController controllerExplanation =
       TextEditingController(text: "Test 2");
 
@@ -15,69 +18,41 @@ class SaveTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        _getTitle(),
-        _getInputFieldWithTitle("Data", controllerData),
-        _getInputFieldWithTitle("Examination", controllerExplanation),
-        Padding(
+        CustomTabTitle(text:"Saving Process"),
+        InputFieldWithTitle(
+            title: "Data",
+            controller: controllerData,
+            hintText: "Type to add Data"),
+        InputFieldWithTitle(
+            title: "Examination",
+            controller: controllerExplanation,
+            hintText: "Type to add Explanation"),
+        CustomButtonLocation_BottomRight(_getSaveButton(context,
+            "Save")) /*    Padding(
           padding: const EdgeInsets.only(right: 25),
           child: ButtonBar(
             children: [
               _getSaveButton(context, "Save"),
             ],
           ),
-        ),
+        ),*/
       ],
     );
   }
 
-  Padding _getTitle() {
-    return Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: Center(
-            child: Text("Saving Process",
-                style: CustomTextStyleForHeaderLabel())));
-  }
 
-  _getInputFieldWithTitle(String text, TextEditingController controller) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text("$text : ", style: CustomTextStyleForInputLabel()),
-          SizedBox(height: 5),
-          _getTextField(controller)
-        ],
-      ),
-    );
-  }
-
-  Widget _getTextField(TextEditingController controller) {
-    const double _borderWidth = 3;
-    const double _borderRadious = 5;
-    return TextField(
-      style: CustomTextStyleForInput(),
-      decoration: InputDecoration(
-        hintText: "Hint text",
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(_borderRadious),
-            borderSide:
-                const BorderSide(width: _borderWidth, color: Colors.blue)),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(_borderRadious),
-            borderSide:
-                const BorderSide(width: _borderWidth, color: Colors.black)),
-      ),
-      controller: controller,
-    );
-  }
 
   Widget _getSaveButton(BuildContext context, String text) {
     return CustomElevatedButton(
         text: text,
-        function: () async{
-          await Provider.of<SearchNodeAreaViewModel>(context, listen: false)
-              .addSearchNode(controllerData.text, controllerExplanation.text);
+        function: () async {
+          // await Provider.of<SearchNodeAreaViewModel>(context, listen: false)
+          //     .addSearchNode(controllerData.text, controllerExplanation.text);
+          await Provider.of<SaveTabViewModel>(context, listen: false).saveData(
+              context: context,
+              data: controllerData.text,
+              explanation: controllerExplanation.text);
+
           await Provider.of<ResultViewModel>(context, listen: false)
               .updateResultLogs();
         });
