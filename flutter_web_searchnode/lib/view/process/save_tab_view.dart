@@ -3,7 +3,6 @@ import 'package:flutter_web_searchnode/product/custom_common_tab_widget.dart';
 import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
-import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
 import 'package:flutter_web_searchnode/view_model/tab/save_tab_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +17,7 @@ class SaveTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        CustomTabTitle(text:"Saving Process"),
+        CustomTabTitle(text: "Saving Process"),
         InputFieldWithTitle(
             title: "Data",
             controller: controllerData,
@@ -40,8 +39,6 @@ class SaveTab extends StatelessWidget {
     );
   }
 
-
-
   Widget _getSaveButton(BuildContext context, String text) {
     return CustomElevatedButton(
         text: text,
@@ -52,9 +49,6 @@ class SaveTab extends StatelessWidget {
               context: context,
               data: controllerData.text,
               explanation: controllerExplanation.text);
-
-          await Provider.of<ResultViewModel>(context, listen: false)
-              .updateResultLogs();
         });
   }
 }
