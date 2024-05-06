@@ -15,13 +15,8 @@ class ResultArea extends StatelessWidget {
       shrinkWrap: true,
       children: [
         HeightSpace(),
-        Center(
-          child: CustomElevatedButton(
-              text: "Clear Logs",
-              function: () {
-                _clearLog(context);
-              }),
-        ),
+        _getClearLogBtn(context),
+
         ListView(
           shrinkWrap: true,
           children: [
@@ -29,6 +24,22 @@ class ResultArea extends StatelessWidget {
             // Text("aaa"),
           ],
         ),
+      ],
+    );
+  }
+
+  Widget _getClearLogBtn(BuildContext context) {
+    return Column(
+      children: [
+        Center(
+            child: CustomElevatedButton(
+                text: "Clear Logs",
+                function: () {
+                  _clearLog(context);
+                }),
+          ),
+        HeightSpace(7),
+        Provider.of<ResultViewModel>(context).logs.isNotEmpty ? CustomDivider():Container(),
       ],
     );
   }

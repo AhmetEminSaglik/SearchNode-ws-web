@@ -35,30 +35,11 @@ public class SearchNodeController {
     public SearchNodeDTO<String> getSearchNodeDTO() {
 //        stackableLogger.add("All SearchNode data is retrieved");
         log.info("All SearchNode data is retrieved");
-        if (sn.getTotalItemNumber() == 0) {
-            sn.add("aa");
-            sn.add("b");
+/*        if (sn.getTotalItemNumber() == 0) {
             sn.add("bbb");
-//            sn.add("bb");
-//            sn.add("aaa");
-//            sn.add("aa");
-//            sn.add("a");
-//            sn.add("aaaa");
-//            sn.add("aaaa");
-//            for(int i=0;i<100;i++){
-//                sn.add(i+"");
-//            }
-//            sn.add("Furkan", "Akgun'de calisiyor");
-//            sn.add("AES", "AES BIGGER");
-//            sn.add("aes", "aes smaller");
-//            sn.add("Ahmet", "");
-//            sn.add("Ahmet", "fake data");
-//            sn.add("Ahmet", "fake data");
-//            sn.add("Ahmet", "Ilk ismim");
-//            sn.add("Furkan", "Soyadi Cetin");
-//            sn.add("Furkan", "Soyadi Cetin");
-//            sn.add("Ahmet Emin", "");
-        }
+            sn.add("b");
+            sn.add("aa");
+        }*/
 
         SearchNodeDTO<String> dto = SearchNodeMapper.toDTO(sn);
         return dto;
