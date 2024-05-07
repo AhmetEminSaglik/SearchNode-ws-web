@@ -44,6 +44,6 @@ ButtonStyle CustomButtonStyle() {
       textStyle: MaterialStateProperty.resolveWith(
           (states) => TextStyle(fontSize: 17)),
       minimumSize: MaterialStateProperty.resolveWith((states) => Size(150, 40)),
-      maximumSize:
-          MaterialStateProperty.resolveWith((states) => Size(200, 50)));
+      // maximumSize:MaterialStateProperty.resolveWith((states) => Size(200, 50))
+  );
 }
