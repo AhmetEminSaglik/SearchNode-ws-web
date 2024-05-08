@@ -10,6 +10,7 @@ import org.aes.searchnode.core.utilities.Result;
 import org.aes.searchnode.core.utilities.SuccessDataResult;
 import org.aes.searchnode.core.utilities.SuccessResult;
 import org.aes.searchnode.entities.NodeDataService;
+import org.aes.searchnode.entities.PriorityChar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class SearchNodeController {
     }
 
 
-    @PutMapping("/explanation")
+    @PutMapping("/explanations")
     public Result updateExplanation(@RequestBody Map<String, String> requestMap) {
         Result result = sn.update(requestMap.get("data"), requestMap.get("oldExplanation"), requestMap.get("newExplanation"));
         System.out.println("result : " + result);
@@ -70,14 +71,14 @@ public class SearchNodeController {
     }
 
 
-    @PutMapping("/char")
+    @PutMapping("/chars/update")
     public Result updateCharacterList(@RequestBody Map<String, String> requestMap) {
         char referanceChar = requestMap.get("charToNext").toCharArray()[0];
         StringBuilder charList = new StringBuilder(requestMap.get("charList"));
         List<Character> characterList = new ArrayList<>();
         List<String> charInformationList = new ArrayList<>();
 
-        String referanceCharInformationText = "Referance character's (" + referanceChar+ ") value : "+sn.getPcService().get(referanceChar).getData().getValue();
+        String referanceCharInformationText = "Referance character's (" + referanceChar + ") value : " + sn.getPcService().get(referanceChar).getData().getValue();
 
         for (int i = 0; i < charList.length(); i++) {
             characterList.add(charList.charAt(i));
@@ -92,9 +93,64 @@ public class SearchNodeController {
         }
 
 
-        StringBuilder loggerString = new StringBuilder(getResultString(result) + "Update Character Process:\n"+referanceCharInformationText+"\n");
+        StringBuilder loggerString = new StringBuilder(getResultString(result) + "Update Character Process:\n" + referanceCharInformationText + "\n");
         for (int i = 0; i < charInformationList.size(); i++) {
             loggerString.append(charInformationList.get(i)).append("\n");
+        }
+        stackableLogger.add(loggerString.toString());
+//        stackableLogger.add("Saved Process: \"" + requestMap.get("data") +":"+ requestMap.get("explanation") + "\"");
+        log.info(stackableLogger.peek());
+
+        return result;
+    }
+
+    @PutMapping("/chars/reset")
+    public Result resetCharacterList(@RequestBody Map<String, String> requestMap) {
+        StringBuilder charList = new StringBuilder(requestMap.get("charList"));
+        List<String> characterInfoBeforeResetPriotriyCharList = new ArrayList<>();
+        Result result = new SuccessResult();
+        for (int i = 0; i < charList.length(); i++) {
+            String currentCharInformation = charList.charAt(i) + " : (old value) " + sn.getPcService().get(charList.charAt(i)).getData().getValue();
+            result = sn.resetPriorityChar(charList.charAt(i));
+            if (!result.isSuccess()) {
+                return result;
+            }
+            currentCharInformation += " : (current Value) " + sn.getPcService().get(charList.charAt(i)).getData().getValue();
+            characterInfoBeforeResetPriotriyCharList.add(currentCharInformation);
+        }
+
+
+        StringBuilder loggerString = new StringBuilder("Reset Character Process:\n");
+        for (int i = 0; i < characterInfoBeforeResetPriotriyCharList.size(); i++) {
+            loggerString.append(characterInfoBeforeResetPriotriyCharList.get(i)).append("\n");
+        }
+        stackableLogger.add(loggerString.toString());
+//        stackableLogger.add("Saved Process: \"" + requestMap.get("data") +":"+ requestMap.get("explanation") + "\"");
+        log.info(stackableLogger.peek());
+
+        return result;
+    }
+
+    @PutMapping("/chars/reset-all")
+    public Result resetAllCharacters() {
+        List<String> characterInfoBeforeResetPriotriyCharList = new ArrayList<>();
+        Result result = new SuccessResult();
+        List<PriorityChar> priorityCharList = sn.getPcService().getAll().getData();
+        while(priorityCharList.size()>0)
+        {
+            char tmpChar=priorityCharList.get(0).getChar();
+            System.out.println("----------------------------");
+            System.out.println("priorityCharList size : "+priorityCharList.size());
+            System.out.println("tmpChar: "+tmpChar);
+            String resetCharacterInfo="(" + tmpChar + ") : (old Value) " + priorityCharList.get(0).getValue();
+            sn.resetPriorityChar(tmpChar);
+            resetCharacterInfo+=tmpChar+" : (new Value) "+sn.getPcService().get(tmpChar).getData().getValue();
+            characterInfoBeforeResetPriotriyCharList.add(resetCharacterInfo);
+        }
+
+        StringBuilder loggerString = new StringBuilder("Reset Character Process:\n");
+        for (int i = 0; i < characterInfoBeforeResetPriotriyCharList.size(); i++) {
+            loggerString.append(characterInfoBeforeResetPriotriyCharList.get(i)).append("\n");
         }
         stackableLogger.add(loggerString.toString());
 //        stackableLogger.add("Saved Process: \"" + requestMap.get("data") +":"+ requestMap.get("explanation") + "\"");
