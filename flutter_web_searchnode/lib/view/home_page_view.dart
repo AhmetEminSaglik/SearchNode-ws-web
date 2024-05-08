@@ -25,6 +25,7 @@ class HomePage extends StatelessWidget {
     _initializeBuildContextLocator(context);
     return Scaffold(
       // appBar: _buildAppBar(),
+      backgroundColor: Colors.white70,
       body: _buildBody(context),
     );
   }
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
         VerticalDivider(),
         Expanded(
             child: Column(children: [
-          _buildTitleOfDividedArea(title: "PROCESS", color: Colors.lightBlue),
+          _buildTitleOfDividedArea(title: "PROCESS", color: Colors.red),
           Expanded(child: ProcessArea()),
         ])),
         VerticalDivider(),
@@ -85,7 +86,7 @@ class HomePage extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.white),
             ),
             isWidgetNull == false
                 ? Row(

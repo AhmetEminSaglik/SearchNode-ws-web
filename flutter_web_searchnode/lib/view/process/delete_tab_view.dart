@@ -3,6 +3,7 @@ import 'package:flutter_web_searchnode/product/custom_common_tab_widget.dart';
 import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
+import 'package:flutter_web_searchnode/product/space_tools.dart';
 import 'package:flutter_web_searchnode/view_model/tab/delete_tab_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,8 @@ class DeleteTab extends StatelessWidget {
     return Column(
       children: [
         CustomTabTitle(text: "Deleting Process", color: Colors.red),
+        HeightSpace(15),
+        CustomDivider(),
         InputFieldWithTitle(
             title: "Data",
             controller: vm.txtEditController,

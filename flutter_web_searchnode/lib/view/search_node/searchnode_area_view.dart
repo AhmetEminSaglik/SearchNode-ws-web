@@ -49,60 +49,65 @@ class SearchNodeArea extends StatelessWidget {
     );
   }
 
-  ExpansionTile _getExpansionTile(
+  Widget _getExpansionTile(
       bool isCollapsed, SearchNodeAreaViewModel viewModel, int index) {
     NodeDataDTO nodeData = viewModel.searchNode!.nodeDataDTOList![index];
-    return ExpansionTile(
-        onExpansionChanged: (bool) {
-          isCollapsed = bool;
-        },
-        backgroundColor: Colors.pink,
-        collapsedShape:
-            Border.fromBorderSide(BorderSide(color: Colors.transparent)),
-        title: _ExpansionInnerPadding(
-          child: Row(
-            children: [
-              _getSubItemTextKey(text: "Value : "),
-              _getSubItemTextKey(text: nodeData.locationAddress ?? "no-data"),
-            ],
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      child: ExpansionTile(
+          onExpansionChanged: (bool) {
+            isCollapsed = bool;
+          },
+          backgroundColor: Colors.pink,
+          shape: Border.fromBorderSide(BorderSide(color: Colors.transparent)),
+          collapsedShape:
+              Border.fromBorderSide(BorderSide(color: Colors.transparent)),
+          title: _ExpansionInnerPadding(
+            child: Row(
+              children: [
+                _getSubItemTextKey(text: "Value : "),
+                _getSubItemTextKey(text: nodeData.locationAddress ?? "no-data"),
+              ],
+            ),
           ),
-        ),
-        subtitle: _ExpansionInnerPadding(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  _getSubItemTextValue(text: "Deep : "),
-                  _getSubItemTextValue(text: "${nodeData.deep}"),
-                ],
-              ),
-              Row(
-                children: [
-                  _getSubItemTextValue(text: "NDTVN : "),
-                  _getSubItemTextValue(
-                      text: "${nodeData.nextDirectionsTotalValueNumber}"),
-                ],
-              ),
-              Row(
-                children: [
-                  _getSubItemTextValue(text: "Data Size : "),
-                  _getSubItemTextValue(
-                      text: "${nodeData.listDataInfoDTO!.length}"),
-                ],
-              ),
-              HeightSpace(),
-            ],
+          subtitle: _ExpansionInnerPadding(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    _getSubItemTextValue(text: "Deep : "),
+                    _getSubItemTextValue(text: "${nodeData.deep}"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    _getSubItemTextValue(text: "NDTVN : "),
+                    _getSubItemTextValue(
+                        text: "${nodeData.nextDirectionsTotalValueNumber}"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    _getSubItemTextValue(text: "Data Size : "),
+                    _getSubItemTextValue(
+                        text: "${nodeData.listDataInfoDTO!.length}"),
+                  ],
+                ),
+                HeightSpace(),
+              ],
+            ),
           ),
-        ),
-        leading: _getSubItemTextKey(text: "${index + 1}-) "),
-        //_getCircularShapeIntValue(index + 1, Colors.blue),
-        trailing: CustomCircularShapeIntValue(
-            value: nodeData.listDataInfoDTO!.length, color: Colors.black),
-        // leading: _getCircularShapeIntValue(index + 1),
-        // trailing: _getCircularShapeIntValue(nodeData.listDataInfoDTO!.length),
-        children: viewModel.searchNode!.nodeDataDTOList![index].listDataInfoDTO!
-            .map((dataInfo) => _getListTile(dataInfo))
-            .toList());
+          leading: _getSubItemTextKey(text: "${index + 1}-) "),
+          //_getCircularShapeIntValue(index + 1, Colors.blue),
+          trailing: CustomCircularShapeIntValue(
+              value: nodeData.listDataInfoDTO!.length, color: Colors.black),
+          // leading: _getCircularShapeIntValue(index + 1),
+          // trailing: _getCircularShapeIntValue(nodeData.listDataInfoDTO!.length),
+          children: viewModel
+              .searchNode!.nodeDataDTOList![index].listDataInfoDTO!
+              .map((dataInfo) => _getListTile(dataInfo))
+              .toList()),
+    );
   }
 
   ListTile _getListTile(DataInfoDTO dataInfo) {
@@ -162,8 +167,6 @@ class SearchNodeArea extends StatelessWidget {
     );
   }
 
-
-
   int _getDataInfoNo(DataInfoDTO dataInfo) => (dataInfo.index! + 1);
 
   Widget _getSubItemTextKey(
@@ -183,6 +186,4 @@ class SearchNodeArea extends StatelessWidget {
             color: color,
             fontWeight: isBold ? FontWeight.bold : null));
   }
-
-
 }

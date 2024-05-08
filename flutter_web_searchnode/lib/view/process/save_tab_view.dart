@@ -3,6 +3,7 @@ import 'package:flutter_web_searchnode/product/custom_common_tab_widget.dart';
 import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
+import 'package:flutter_web_searchnode/product/space_tools.dart';
 import 'package:flutter_web_searchnode/view_model/tab/save_tab_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,8 @@ class SaveTab extends StatelessWidget {
     return Column(
       children: [
         CustomTabTitle(text: "Saving Process", color: Colors.blue),
+        HeightSpace(15),
+        CustomDivider(),
         InputFieldWithTitle(
             title: "Data",
             controller: vm.controllerData,

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class UpdateCardTab {
-  late Card _collapsedCard;
-  late Card _expandedCard;
+class UpdateCardWidgetTab {
+  late Widget _collapsedCard;
+  late Widget _expandedCard;
   bool _isExpanded = false;
 
-  UpdateCardTab({required collapsedCard, required expandedCard}) {
+  UpdateCardWidgetTab({required collapsedCard, required expandedCard}) {
     _collapsedCard = collapsedCard;
     _expandedCard = expandedCard;
   }
 
-  Card getCard() {
-    print("donecek deger $_isExpanded ");
+  Widget getCard() {
+    // print("donecek deger $_isExpanded ");
     return _isExpanded ? _expandedCard : _collapsedCard;
   }
 
