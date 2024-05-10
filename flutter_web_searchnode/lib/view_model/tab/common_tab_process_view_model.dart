@@ -37,10 +37,12 @@ abstract class CommonTabProcessViewModel with ChangeNotifier {
   }
 
   @protected
-  bool isDataValid(TextEditingController controller) {
+  bool isDataValid(
+      {required TextEditingController controller,
+      String controllerName = ""}) {
     bool result = controller.text.isNotEmpty;
     if (!result) {
-      String errMsg = invalidCharLengthErrMsg;
+      String errMsg = "$controllerName $invalidCharLengthErrMsg";
       updateSuccess(false);
       updateMsg(errMsg);
     }

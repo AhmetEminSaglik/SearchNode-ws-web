@@ -5,6 +5,11 @@ import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
+import 'package:flutter_web_searchnode/view_model/tab/update/reset_all_char_view_model.dart';
+import 'package:flutter_web_searchnode/view_model/tab/update/reset_char_view_model.dart';
+import 'package:flutter_web_searchnode/view_model/tab/update/update_chars_view_model.dart';
+import 'package:flutter_web_searchnode/view_model/tab/update/update_explanation_view_model.dart';
+import 'package:provider/provider.dart';
 
 class UpdateTab extends StatefulWidget {
   @override
@@ -35,7 +40,7 @@ class _UpdateTabState extends State<UpdateTab> {
         _getCustomUpdateCard(),
         /*   _getUpdateCard(
           isExpanded: isExpandedUpdateCharCard,
-          expandedWidget: _getUpdateCharCard(),
+          expandedWidget: _getUpdateCharListCard(),
           collapsedWidget: Text("Colapsed Card eklencek"),
         ),
         _getUpdateCard(
@@ -45,7 +50,7 @@ class _UpdateTabState extends State<UpdateTab> {
         ),*/
         // _getUpdateCards(),
         // _getUpdateExplanationCard(),
-        // _getUpdateCharCard(),
+        // _getUpdateCharListCard(),
         // _getResetCharCard(),
       ],
     );
@@ -102,79 +107,97 @@ class _UpdateTabState extends State<UpdateTab> {
   }
 */
   Widget _getUpdateExplanationCard() {
+    UpdateExplanationViewModel vm =
+        Provider.of<UpdateExplanationViewModel>(context, listen: false);
     return Column(
       children: [
-        _getCardText(text: textUpdateExplanation, textColor: Colors.blue,isBold: true),
+        _getCardText(
+            text: textUpdateExplanation, textColor: Colors.blue, isBold: true),
         InputFieldWithTitle(
             title: "Data",
-            controller: TextEditingController(),
+            controller: vm.dataController,
             hintText: "Type data of explanation to update"),
         InputFieldWithTitle(
             title: "Current Explanation",
-            controller: TextEditingController(),
+            controller: vm.oldExplanationController,
             hintText: "Type current explanation will be updated"),
         InputFieldWithTitle(
             title: "New Explanation",
-            controller: TextEditingController(),
+            controller: vm.newExplanationController,
             hintText: "Type new explanation"),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
-          child: CustomButtonLocation_BottomCenter(CustomElevatedButton(
-              text: "Update Explanation",
+          child: CustomButtonLocation_BottomRight(CustomElevatedButton(
+              text: "Update",
               function: () {
-                print("update islemi yapilacak");
+                vm.update();
               })),
-        )
+        ),
+        _getResultMsgUpdateExplanation(),
       ],
     );
   }
 
-  Widget _getUpdateCharCard() {
+  Widget _getUpdateCharListCard() {
+    UpdateCharsViewModel vm =
+    Provider.of<UpdateCharsViewModel>(context, listen: false);
     return Column(
       children: [
-        _getCardText(text: textUpdateCharacter, textColor: Colors.blue,isBold: true),
+        _getCardText(
+            text: textUpdateCharacter, textColor: Colors.blue, isBold: true),
         InputFieldWithTitle(
-            title: "Character to put next ",
-            controller: TextEditingController(),
-            hintText: "Type data of explanation to update"),
-
+            // title: "Character to put next ",
+            title: "Referance Char ",
+            controller: vm.charToNextController,
+            hintText: "Type data of explanation to update",
+            maxLength: 1),
         InputFieldWithTitle(
             title: "Character list to update",
-            controller: TextEditingController(),
+            controller: vm.charListController,
             hintText: "Type data of explanation to update"),
         CustomButtonLocation_BottomRight(CustomElevatedButton(
             text: "Update",
             function: () {
-              print("update islemi yapilacak");
-            }))
+              vm.update();
+            })),
+        _getResultMsgUpdateChar(),
       ],
     );
   }
 
   Widget _getResetCharCard() {
+    ResetCharViewModel vm =
+    Provider.of<ResetCharViewModel>(context, listen: false);
     return Column(
       children: [
-        _getCardText(text: textResetCharacter, textColor: Colors.blue,isBold: true),
+        _getCardText(
+            text: textResetCharacter, textColor: Colors.blue, isBold: true),
         InputFieldWithTitle(
             title: "Character list",
-            controller: TextEditingController(),
+            controller: vm.charListController,
             hintText: "Type characters to reset : abcd"),
         CustomButtonLocation_BottomRight(CustomElevatedButton(
-            text: "Reset Chars",
+            text: "Reset",
             function: () {
-              print("update islemi yapilacak");
+              vm.resetCharacters();
             })),
         CustomButtonLocation_BottomRight(CustomElevatedButton(
             text: "Reset All Characters",
             function: () {
-              print("Reset All Characters");
+              ResetAllCharViewModel vm =
+              Provider.of<ResetAllCharViewModel>(context, listen: false);
+              vm.resetAllCharacters();
+
             })),
+        _getResultMsgResetChar(),
       ],
     );
   }
 
   Text _getCardText(
-      {required String text, Color textColor=Colors.black, bool isBold = false}) {
+      {required String text,
+      Color textColor = Colors.black,
+      bool isBold = false}) {
     return Text(text,
         style: TextStyle(
             fontSize: 22,
@@ -189,7 +212,7 @@ class _UpdateTabState extends State<UpdateTab> {
             _getCardText(text: textUpdateExplanation, textColor: Colors.white));
 
     UpdateCardWidgetTab expandedUpdateCharacterCard = UpdateCardWidgetTab(
-        expandedCard: _getUpdateCharCard(),
+        expandedCard: _getUpdateCharListCard(),
         collapsedCard:
             _getCardText(text: textUpdateCharacter, textColor: Colors.white));
 
@@ -201,5 +224,47 @@ class _UpdateTabState extends State<UpdateTab> {
     customCardList.add(expandedUpdateExplanationCard);
     customCardList.add(expandedUpdateCharacterCard);
     customCardList.add(expandedResetCharacterCard);
+  }
+
+  Widget _getResultMsgUpdateExplanation() {
+    return Consumer<UpdateExplanationViewModel>(
+      builder: (context, vm, child) {
+        if (vm.msg.isNotEmpty && vm.isSuccess != null) {
+          return Text(
+            vm.msg,
+            style: CustomTextStyleForResultMsg(vm.isSuccess),
+          );
+        }
+        return Container();
+      },
+    );
+  }
+
+  Widget _getResultMsgUpdateChar() {
+    return Consumer<UpdateCharsViewModel>(
+      builder: (context, vm, child) {
+        if (vm.msg.isNotEmpty && vm.isSuccess != null) {
+          return Text(
+            vm.msg,
+            style: CustomTextStyleForResultMsg(vm.isSuccess),
+          );
+        }
+        return Container();
+      },
+    );
+  }
+
+  Widget _getResultMsgResetChar() {
+    return Consumer<ResetCharViewModel>(
+      builder: (context, vm, child) {
+        if (vm.msg.isNotEmpty && vm.isSuccess != null) {
+          return Text(
+            vm.msg,
+            style: CustomTextStyleForResultMsg(vm.isSuccess),
+          );
+        }
+        return Container();
+      },
+    );
   }
 }

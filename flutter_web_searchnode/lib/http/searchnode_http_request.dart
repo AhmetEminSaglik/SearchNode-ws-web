@@ -51,4 +51,64 @@ class SearchNodeHttpRequest {
         RespondDataResult.fromJson(json.decode(respond.body));
     return respondDataResult;
   }
+
+  static Future<RespondDataResult> updateExplanation(
+      String data, String oldExp, String newExp,) async {
+    Uri url = Uri.parse("$_baseUrl/explanations");
+    Map<String, dynamic> requestData = {
+      "data": data,
+      "oldExplanation": oldExp,
+      "newExplanation": newExp,
+    };
+    print("Map : $requestData");
+    print("URL : $url");
+    var respond = await http.put(url,
+        headers: HttpUtil.header, body: json.encode(requestData));
+    // Map<String, dynamic> map = json.decode(respond.body);
+    // return RepositorySearchNode.parseToSearchNode(map);
+    RespondDataResult respondDataResult =
+    RespondDataResult.fromJson(json.decode(respond.body));
+    return respondDataResult;
+  }
+
+  static Future<RespondDataResult> updateCharacterList(String charToNext, String charList) async {
+    Uri url = Uri.parse("$_baseUrl/chars/update");
+    Map<String, dynamic> requestData = {
+      "charToNext": charToNext,
+      "charList": charList,
+    };
+    print("Map : $requestData");
+    print("URL : $url");
+    var respond = await http.put(url,
+        headers: HttpUtil.header, body: json.encode(requestData));
+    RespondDataResult respondDataResult =
+    RespondDataResult.fromJson(json.decode(respond.body));
+    return respondDataResult;
+  }
+
+
+  static Future<RespondDataResult> resetCharacterList(String charList) async {
+    Uri url = Uri.parse("$_baseUrl/chars/reset");
+    Map<String, dynamic> requestData = {
+      "charList": charList,
+    };
+    print("Map : $requestData");
+    print("URL : $url");
+    var respond = await http.put(url,
+        headers: HttpUtil.header, body: json.encode(requestData));
+    RespondDataResult respondDataResult =
+    RespondDataResult.fromJson(json.decode(respond.body));
+    return respondDataResult;
+  }
+
+  static Future<RespondDataResult> resetAllCharacters() async {
+    Uri url = Uri.parse("$_baseUrl/chars/reset-all");
+    print("URL : $url");
+    var respond = await http.put(url,
+        headers: HttpUtil.header);
+    RespondDataResult respondDataResult =
+    RespondDataResult.fromJson(json.decode(respond.body));
+    return respondDataResult;
+  }
+
 }

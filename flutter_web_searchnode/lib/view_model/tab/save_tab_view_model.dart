@@ -7,7 +7,7 @@ class SaveTabViewModel extends CommonTabProcessViewModel {
   TextEditingController controllerExplanation = TextEditingController();
 
   Future<void> saveData() async {
-    if (isDataValid(controllerData)) {
+    if (isDataValid(controller: controllerData,controllerName: "Data ")) {
       await sendRequest();
       _clearTextFields();
       await retrieveAllData();////adding data consecutively and backend gave error although syncronized key word is used. But when added await here, Then all proces worked step by step.

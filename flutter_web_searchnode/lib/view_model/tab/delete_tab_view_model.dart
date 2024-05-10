@@ -6,7 +6,7 @@ class DeleteTabViewModel extends CommonTabProcessViewModel {
   TextEditingController txtEditController = TextEditingController();
 
   void removeData() async {
-    if (isDataValid(txtEditController)) {
+    if (isDataValid(controller: txtEditController,controllerName: "Data ")) {
       await sendRequest();
       clearTextField(txtEditController);
       retrieveAllData();
