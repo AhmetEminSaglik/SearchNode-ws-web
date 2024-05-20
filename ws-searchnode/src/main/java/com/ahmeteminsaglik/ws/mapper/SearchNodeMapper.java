@@ -9,25 +9,22 @@ import org.aes.searchnode.entities.DataInfo;
 import org.aes.searchnode.entities.NodeData;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class SearchNodeMapper {
 
     public static <T> SearchNodeDTO<T> toDTO(SearchNode<T> searchNode) {
-        Set<T> snAddedItemlist = new HashSet<>();
-        searchNode.getAll().getData().forEach(e -> snAddedItemlist.add(e.getValue()));
-
-//        System.out.println("---------------");
-//        System.out.println("eklenmis itemler : ");
-//        snAddedItemlist.forEach(System.out::println);
-
+        List<DataInfo<T>> snAddedItemlist = new ArrayList<>();
+        searchNode.getAll().forEach(e -> {
+            snAddedItemlist.add(e);
+        });
 
         List<NodeData<T>> nodeDataList = new ArrayList<>();
         snAddedItemlist.forEach(e -> {
-            NodeData<T> nodeData=searchNode.searchNodeData(e.toString()).getData();
-            nodeDataList.add(nodeData);
+            NodeData<T> nodeData = searchNode.searchNodeData(e.getValue().toString());
+            if (!nodeDataList.contains(nodeData)) {
+                nodeDataList.add(nodeData);
+            }
         });
 
         List<NodeDataDTO<T>> nodeDataListDTO = new ArrayList<>();

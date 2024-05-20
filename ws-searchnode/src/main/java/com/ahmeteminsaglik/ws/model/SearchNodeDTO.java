@@ -16,7 +16,7 @@ public class SearchNodeDTO<T> {
     }
 
     public void setNodeDataDTOList(List<NodeDataDTO<T>> nodeDataDTOList) {
-        Collections.sort(nodeDataDTOList);
+//        Collections.sort(nodeDataDTOList);
         this.nodeDataDTOList = nodeDataDTOList;
     }
 

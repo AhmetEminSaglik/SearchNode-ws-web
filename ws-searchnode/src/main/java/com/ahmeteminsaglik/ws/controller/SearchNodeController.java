@@ -39,6 +39,22 @@ public class SearchNodeController {
     @GetMapping()
 //    public ResponseEntity<SearchNodeDTO<String>> getSearchNodeDTO() {
     public SearchNodeDTO<String> getSearchNodeDTO() {
+        if(sn.getTotalItemNumber()==0){
+            sn.add("a","2");
+//            sn.add("ca","4");
+            sn.add("a","1");
+//            sn.add("ca","3");
+            sn.add("a");
+            sn.add("b");
+            sn.add("c");
+            sn.add("d");
+//            sn.add("d");
+//            sn.add("a");
+//            sn.add("b");
+//            sn.updatePriorityChar('d','a');// a c b d -> a c d b
+//            sn.updatePriorityChar('a','c');// a c b d -> a c d b
+            sn.updatePriorityChar('a','d');
+        }
         log.info("All SearchNode data is retrieved");
         SearchNodeDTO<String> dto = SearchNodeMapper.toDTO(sn);
         return dto;
@@ -78,17 +94,17 @@ public class SearchNodeController {
         List<Character> characterList = new ArrayList<>();
         List<String> charInformationList = new ArrayList<>();
 
-        String referanceCharInformationText = "Referance character's (" + referanceChar + ") value : " + sn.getPcService().get(referanceChar).getData().getValue();
+        String referanceCharInformationText = "Referance character's (" + referanceChar + ") value : " + sn.getPc(referanceChar).getValue();
 
         for (int i = 0; i < charList.length(); i++) {
             characterList.add(charList.charAt(i));
-            String currentCharInformation = charList.charAt(i) + " : (old value) " + sn.getPcService().get(charList.charAt(i)).getData().getValue();
+            String currentCharInformation = charList.charAt(i) + " : (old value) " + sn.getPc(charList.charAt(i)).getValue();;
             charInformationList.add(currentCharInformation);
         }
         Result result = sn.updatePriorityChar(characterList, referanceChar);
 
         for (int i = 0; i < charInformationList.size(); i++) {
-            String currentCharInformation = charInformationList.get(i) + " : (new value) " + sn.getPcService().get(charList.charAt(i)).getData().getValue();
+            String currentCharInformation = charInformationList.get(i) + " : (new value) " + sn.getPc(charList.charAt(i)).getValue();
             charInformationList.set(i, currentCharInformation);
         }
 
@@ -110,12 +126,12 @@ public class SearchNodeController {
         List<String> characterInfoBeforeResetPriotriyCharList = new ArrayList<>();
         Result result = new SuccessResult();
         for (int i = 0; i < charList.length(); i++) {
-            String currentCharInformation = charList.charAt(i) + " : (old value) " + sn.getPcService().get(charList.charAt(i)).getData().getValue();
+            String currentCharInformation = charList.charAt(i) + " : (old value) " + sn.getPc(charList.charAt(i)).getValue();
             result = sn.resetPriorityChar(charList.charAt(i));
             if (!result.isSuccess()) {
                 return result;
             }
-            currentCharInformation += " : (current Value) " + sn.getPcService().get(charList.charAt(i)).getData().getValue();
+            currentCharInformation += " : (current Value) " +  sn.getPc(charList.charAt(i)).getValue();
             characterInfoBeforeResetPriotriyCharList.add(currentCharInformation);
         }
 
@@ -135,7 +151,7 @@ public class SearchNodeController {
     public Result resetAllCharacters() {
         List<String> characterInfoBeforeResetPriotriyCharList = new ArrayList<>();
         Result result = new SuccessResult();
-        List<PriorityChar> priorityCharList = sn.getPcService().getAll().getData();
+        List<PriorityChar> priorityCharList = sn.getAllPc();
         while(priorityCharList.size()>0)
         {
             char tmpChar=priorityCharList.get(0).getChar();
@@ -144,7 +160,7 @@ public class SearchNodeController {
             System.out.println("tmpChar: "+tmpChar);
             String resetCharacterInfo="(" + tmpChar + ") : (old Value) " + priorityCharList.get(0).getValue();
             sn.resetPriorityChar(tmpChar);
-            resetCharacterInfo+=tmpChar+" : (new Value) "+sn.getPcService().get(tmpChar).getData().getValue();
+            resetCharacterInfo+=tmpChar+" : (new Value) "+ sn.getPc(tmpChar).getValue();
             characterInfoBeforeResetPriotriyCharList.add(resetCharacterInfo);
         }
 
@@ -162,7 +178,7 @@ public class SearchNodeController {
     @DeleteMapping()
     public Result removeData(@RequestBody Map<String, String> requestMap) {
         String data = requestMap.get("data");
-        NodeDataService<String> nodeDataService = sn.search(data).getData();
+        NodeDataService<String> nodeDataService = sn.search(data);
         Result result;
         int explanationSize = 0;
         StringBuilder msgSb = new StringBuilder("Deleted Process:\n");
