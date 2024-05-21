@@ -5,6 +5,7 @@ import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
+import 'package:flutter_web_searchnode/tools/CustomColors.dart';
 import 'package:flutter_web_searchnode/view_model/tab/update/reset_all_char_view_model.dart';
 import 'package:flutter_web_searchnode/view_model/tab/update/reset_char_view_model.dart';
 import 'package:flutter_web_searchnode/view_model/tab/update/update_chars_view_model.dart';
@@ -34,7 +35,9 @@ class _UpdateTabState extends State<UpdateTab> {
     return ListView(
       shrinkWrap: true,
       children: [
-        CustomTabTitle(text: "Update Process", color: Colors.green),
+        Container(
+            color: Colors.white.withOpacity(0.8),
+            child: CustomTabTitle(text: "Update Process", color: Colors.green)),
         HeightSpace(15),
         CustomDivider(),
         _getCustomUpdateCard(),
@@ -68,14 +71,14 @@ class _UpdateTabState extends State<UpdateTab> {
         itemCount: customCardList.length,
         itemBuilder: (context, index) {
           return Card(
-            color: Colors.lightBlueAccent,
+            color: CustomColors.opacityLightBlue,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: ExpansionTile(
-                // iconColor: Colors.white,
+                iconColor: Colors.white,
                 // collapsedBackgroundColor: Colors.red,
-                // collapsedIconColor: Colors.white,
-                backgroundColor: Colors.white70,
+                collapsedIconColor: Colors.white,
+                // backgroundColor: Colors.lightBlue.withOpacity(0.2),
                 collapsedShape: Border.fromBorderSide(
                     BorderSide(color: Colors.transparent)),
                 shape: Border.fromBorderSide(
@@ -112,7 +115,7 @@ class _UpdateTabState extends State<UpdateTab> {
     return Column(
       children: [
         _getCardText(
-            text: textUpdateExplanation, textColor: Colors.blue, isBold: true),
+            text: textUpdateExplanation, textColor: Colors.white),
         InputFieldWithTitle(
             title: "Data",
             controller: vm.dataController,
@@ -140,11 +143,11 @@ class _UpdateTabState extends State<UpdateTab> {
 
   Widget _getUpdateCharListCard() {
     UpdateCharsViewModel vm =
-    Provider.of<UpdateCharsViewModel>(context, listen: false);
+        Provider.of<UpdateCharsViewModel>(context, listen: false);
     return Column(
       children: [
         _getCardText(
-            text: textUpdateCharacter, textColor: Colors.blue, isBold: true),
+            text: textUpdateCharacter, textColor: Colors.white),
         InputFieldWithTitle(
             // title: "Character to put next ",
             title: "Referance Char ",
@@ -167,11 +170,11 @@ class _UpdateTabState extends State<UpdateTab> {
 
   Widget _getResetCharCard() {
     ResetCharViewModel vm =
-    Provider.of<ResetCharViewModel>(context, listen: false);
+        Provider.of<ResetCharViewModel>(context, listen: false);
     return Column(
       children: [
         _getCardText(
-            text: textResetCharacter, textColor: Colors.blue, isBold: true),
+            text: textResetCharacter, textColor: Colors.white),
         InputFieldWithTitle(
             title: "Character list",
             controller: vm.charListController,
@@ -185,9 +188,8 @@ class _UpdateTabState extends State<UpdateTab> {
             text: "Reset All Characters",
             function: () {
               ResetAllCharViewModel vm =
-              Provider.of<ResetAllCharViewModel>(context, listen: false);
+                  Provider.of<ResetAllCharViewModel>(context, listen: false);
               vm.resetAllCharacters();
-
             })),
         _getResultMsgResetChar(),
       ],
@@ -230,9 +232,15 @@ class _UpdateTabState extends State<UpdateTab> {
     return Consumer<UpdateExplanationViewModel>(
       builder: (context, vm, child) {
         if (vm.msg.isNotEmpty && vm.isSuccess != null) {
-          return Text(
-            vm.msg,
-            style: CustomTextStyleForResultMsg(vm.isSuccess),
+          return Card(
+            color: CustomMsgContainerBackgroundStyle(vm.isSuccess),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Text(
+                vm.msg,
+                style: CustomTextStyleForResultMsg(),
+              ),
+            ),
           );
         }
         return Container();
@@ -244,9 +252,15 @@ class _UpdateTabState extends State<UpdateTab> {
     return Consumer<UpdateCharsViewModel>(
       builder: (context, vm, child) {
         if (vm.msg.isNotEmpty && vm.isSuccess != null) {
-          return Text(
-            vm.msg,
-            style: CustomTextStyleForResultMsg(vm.isSuccess),
+          return Card(
+            color: CustomMsgContainerBackgroundStyle(vm.isSuccess),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Text(
+                vm.msg,
+                style: CustomTextStyleForResultMsg(),
+              ),
+            ),
           );
         }
         return Container();
@@ -258,9 +272,15 @@ class _UpdateTabState extends State<UpdateTab> {
     return Consumer<ResetCharViewModel>(
       builder: (context, vm, child) {
         if (vm.msg.isNotEmpty && vm.isSuccess != null) {
-          return Text(
-            vm.msg,
-            style: CustomTextStyleForResultMsg(vm.isSuccess),
+          return Card(
+            color: CustomMsgContainerBackgroundStyle(vm.isSuccess),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Text(
+                vm.msg,
+                style: CustomTextStyleForResultMsg(),
+              ),
+            ),
           );
         }
         return Container();

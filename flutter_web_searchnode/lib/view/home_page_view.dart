@@ -26,7 +26,27 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // appBar: _buildAppBar(),
       backgroundColor: Colors.white70,
-      body: _buildBody(context),
+      body: Stack(
+        children: [
+
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return Center(
+                child: Container(
+                  height: constraints.maxHeight,
+                  // Adjust the multiplier as needed
+                  width: constraints.maxWidth,
+                  // Adjust the multiplier as needed
+                  child: CustomPaint(
+                    painter: TrianglePainter(),
+                  ),
+                ),
+              );
+            },
+          ),
+          _buildBody(context),
+        ],
+      ),
     );
   }
 
@@ -60,12 +80,12 @@ class HomePage extends StatelessWidget {
         VerticalDivider(),
         Expanded(
             child: Column(children: [
-          _buildTitleOfDividedArea(
-              title: "RESULT",
-              widget: _getLogsLengthInCircularWidget(context),
-              color: Colors.orange),
-          Expanded(child: ResultArea()),
-        ])),
+              _buildTitleOfDividedArea(
+                  title: "RESULT",
+                  widget: _getLogsLengthInCircularWidget(context),
+                  color: Colors.orange),
+              Expanded(child: ResultArea()),
+            ])),
       ],
     );
   }
@@ -86,7 +106,10 @@ class HomePage extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.white),
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
             isWidgetNull == false
                 ? Row(
@@ -111,5 +134,32 @@ class HomePage extends StatelessWidget {
         return CustomCircularShapeIntValue(value: vm.logs.length);
       },
     );
+  }
+}
+
+class TrianglePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = Colors.red
+      ..style = PaintingStyle.fill;
+
+    Path path = Path();
+    double height = size.height / 3;
+    path.moveTo(size.width / 2, height); // Top point
+    path.lineTo(size.width, 0); // Bottom right
+    path.lineTo(0, 0); // Bottom left
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  double getBottomHeightOfTriange(double val) {
+    return val * (-2.37);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }

@@ -79,7 +79,7 @@ class ResultArea extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(vm.logs[index]),
+        Text(vm.logs[index],style:  TextStyle(color: Colors.white),),
         HeightSpace(),
         CustomDivider(),
       ],

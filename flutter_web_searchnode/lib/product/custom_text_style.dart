@@ -4,16 +4,23 @@ TextStyle CustomTextStyleForInput() {
   return TextStyle(fontSize: 18);
 }
 
-TextStyle CustomTextStyleForResultMsg(bool success) {
-  return TextStyle(fontSize: 20, color: success ?   Colors.green : Colors.red);
+TextStyle CustomTextStyleForResultMsg(/*bool success*/) {
+  return TextStyle(
+      fontSize: 20, color: /*success ?   Colors.green :*/ Colors.black);
 }
 
-TextStyle CustomTextStyleForHeaderLabel({Color color=Colors.black}) {
+Color CustomMsgContainerBackgroundStyle(bool success) {
+  // return success ? Colors.lightGreenAccent.shade700.withOpacity(0.8) : Colors.red;
+  return success ? Colors.lightGreenAccent : Colors.red;
+  // return success ? Colors.green : Colors.red;
+}
+
+TextStyle CustomTextStyleForHeaderLabel({Color color = Colors.black}) {
   return TextStyle(fontSize: 30, color: color);
 }
 
 TextStyle CustomTextStyleForInputLabel() {
-  return TextStyle(fontSize: 20, color: Colors.red);
+  return TextStyle(fontSize: 20, color: Colors.white);
 }
 
 // Widget CustomElevatedButton(String text,Function function(int a)) {
@@ -39,11 +46,11 @@ Widget CustomElevatedButton(
 
 ButtonStyle CustomButtonStyle() {
   return ButtonStyle(
-      backgroundColor: MaterialStateColor.resolveWith((states) => Colors.red),
-      foregroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
-      textStyle: MaterialStateProperty.resolveWith(
-          (states) => TextStyle(fontSize: 17)),
-      minimumSize: MaterialStateProperty.resolveWith((states) => Size(150, 40)),
-      // maximumSize:MaterialStateProperty.resolveWith((states) => Size(200, 50))
+    backgroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
+    foregroundColor: MaterialStateColor.resolveWith((states) => Colors.black),
+    textStyle:
+        MaterialStateProperty.resolveWith((states) => TextStyle(fontSize: 17)),
+    minimumSize: MaterialStateProperty.resolveWith((states) => Size(150, 40)),
+    // maximumSize:MaterialStateProperty.resolveWith((states) => Size(200, 50))
   );
 }

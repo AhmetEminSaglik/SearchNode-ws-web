@@ -10,15 +10,18 @@ class ProcessArea extends StatelessWidget {
       length: 3,
       child: Scaffold(
         // backgroundColor: Colors.greenAccent,
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
             toolbarHeight: 0,
             leading: null,
             automaticallyImplyLeading: false,
+            backgroundColor: Colors.white.withOpacity(0.8),
             bottom: TabBar(
               // indicatorColor: Colors.red,
               // labelColor: Colors.red,
 /*              overlayColor:
                   MaterialStateColor.resolveWith((states) => Colors.grey),*/
+
               dividerColor: Colors.black,
               tabs: [
                 // Tab(child: _getTabBarText("Save", Icons.add, Colors.blue)),

@@ -4,6 +4,7 @@ import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
+import 'package:flutter_web_searchnode/tools/CustomColors.dart';
 import 'package:flutter_web_searchnode/view_model/tab/save_tab_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -12,22 +13,14 @@ class SaveTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SaveTabViewModel vm = Provider.of<SaveTabViewModel>(context, listen: false);
     return Column(
       children: [
-        CustomTabTitle(text: "Saving Process", color: Colors.blue),
+        Container(
+            color: Colors.white.withOpacity(0.8),
+            child: CustomTabTitle(text: "Saving Process", color: Colors.blue)),
         HeightSpace(15),
         CustomDivider(),
-        InputFieldWithTitle(
-            title: "Data",
-            controller: vm.controllerData,
-            hintText: "Type to add Data"),
-        InputFieldWithTitle(
-            title: "Examination",
-            controller: vm.controllerExplanation,
-            hintText: "Type to add Explanation"),
-        CustomButtonLocation_BottomRight(_getSaveButton(context, "Save")),
-        _getResultMsg(),
+        _getSaveCard(context),
       ],
     );
   }
@@ -47,13 +40,43 @@ class SaveTab extends StatelessWidget {
     return Consumer<SaveTabViewModel>(
       builder: (context, vm, child) {
         if (vm.msg.isNotEmpty && vm.isSuccess != null) {
-          return Text(
-            vm.msg,
-            style: CustomTextStyleForResultMsg(vm.isSuccess),
+          return Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Card(
+              color: CustomMsgContainerBackgroundStyle(vm.isSuccess),
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Text(
+                  vm.msg,
+                  style: CustomTextStyleForResultMsg(),
+                ),
+              ),
+            ),
           );
         }
         return Container();
       },
+    );
+  }
+
+  Widget _getSaveCard(BuildContext context) {
+    SaveTabViewModel vm = Provider.of<SaveTabViewModel>(context, listen: false);
+    return Card(
+      color: CustomColors.opacityLightBlue,
+      child: Column(
+        children: [
+          InputFieldWithTitle(
+              title: "Data",
+              controller: vm.controllerData,
+              hintText: "Type to add Data"),
+          InputFieldWithTitle(
+              title: "Examination",
+              controller: vm.controllerExplanation,
+              hintText: "Type to add Explanation"),
+          CustomButtonLocation_BottomRight(_getSaveButton(context, "Save")),
+          _getResultMsg(),
+        ],
+      ),
     );
   }
 }
