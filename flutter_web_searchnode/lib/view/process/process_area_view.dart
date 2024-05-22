@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_searchnode/tools/CustomColors.dart';
 import 'package:flutter_web_searchnode/view/process/delete_tab_view.dart';
 import 'package:flutter_web_searchnode/view/process/save_tab_view.dart';
 import 'package:flutter_web_searchnode/view/process/update_tab_view.dart';
@@ -15,7 +16,7 @@ class ProcessArea extends StatelessWidget {
             toolbarHeight: 0,
             leading: null,
             automaticallyImplyLeading: false,
-            backgroundColor: Colors.white.withOpacity(0.8),
+            backgroundColor: CustomColors.opacityWhite,
             bottom: TabBar(
               // indicatorColor: Colors.red,
               // labelColor: Colors.red,

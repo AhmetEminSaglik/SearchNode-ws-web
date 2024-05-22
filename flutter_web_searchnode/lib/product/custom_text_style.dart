@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_searchnode/tools/CustomColors.dart';
 
 TextStyle CustomTextStyleForInput() {
-  return TextStyle(fontSize: 18);
+  return TextStyle(fontSize: 18,color: CustomColors.white);
 }
 
 TextStyle CustomTextStyleForResultMsg(/*bool success*/) {

@@ -154,10 +154,6 @@ class TrianglePainter extends CustomPainter {
     canvas.drawPath(path, paint);
   }
 
-  double getBottomHeightOfTriange(double val) {
-    return val * (-2.37);
-  }
-
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     return false;

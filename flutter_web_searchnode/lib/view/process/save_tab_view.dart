@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_searchnode/product/custom_card.dart';
 import 'package:flutter_web_searchnode/product/custom_common_tab_widget.dart';
-import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
+import 'package:flutter_web_searchnode/product/custom_edit_text_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
@@ -16,7 +17,7 @@ class SaveTab extends StatelessWidget {
     return Column(
       children: [
         Container(
-            color: Colors.white.withOpacity(0.8),
+            color:CustomColors.opacityWhite,
             child: CustomTabTitle(text: "Saving Process", color: Colors.blue)),
         HeightSpace(15),
         CustomDivider(),
@@ -61,22 +62,20 @@ class SaveTab extends StatelessWidget {
 
   Widget _getSaveCard(BuildContext context) {
     SaveTabViewModel vm = Provider.of<SaveTabViewModel>(context, listen: false);
-    return Card(
-      color: CustomColors.opacityLightBlue,
-      child: Column(
-        children: [
-          InputFieldWithTitle(
-              title: "Data",
-              controller: vm.controllerData,
-              hintText: "Type to add Data"),
-          InputFieldWithTitle(
-              title: "Examination",
-              controller: vm.controllerExplanation,
-              hintText: "Type to add Explanation"),
-          CustomButtonLocation_BottomRight(_getSaveButton(context, "Save")),
-          _getResultMsg(),
-        ],
-      ),
-    );
+    return CustomCard(
+        child: Column(
+      children: [
+        InputFieldWithTitle(
+            title: "Data",
+            controller: vm.controllerData,
+            hintText: "Type to add Data"),
+        InputFieldWithTitle(
+            title: "Examination",
+            controller: vm.controllerExplanation,
+            hintText: "Type to add Explanation"),
+        CustomButtonLocation_BottomRight(_getSaveButton(context, "Save")),
+        _getResultMsg(),
+      ],
+    ));
   }
 }

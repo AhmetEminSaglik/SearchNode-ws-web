@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/UpdateTabCard.dart';
+import 'package:flutter_web_searchnode/product/custom_card.dart';
 import 'package:flutter_web_searchnode/product/custom_common_tab_widget.dart';
-import 'package:flutter_web_searchnode/product/custom_edittext_with_title.dart';
+import 'package:flutter_web_searchnode/product/custom_edit_text_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
@@ -36,7 +37,7 @@ class _UpdateTabState extends State<UpdateTab> {
       shrinkWrap: true,
       children: [
         Container(
-            color: Colors.white.withOpacity(0.8),
+            color:CustomColors.opacityWhite,
             child: CustomTabTitle(text: "Update Process", color: Colors.green)),
         HeightSpace(15),
         CustomDivider(),
@@ -70,28 +71,26 @@ class _UpdateTabState extends State<UpdateTab> {
         shrinkWrap: true,
         itemCount: customCardList.length,
         itemBuilder: (context, index) {
-          return Card(
-            color: CustomColors.opacityLightBlue,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: ExpansionTile(
-                iconColor: Colors.white,
-                // collapsedBackgroundColor: Colors.red,
-                collapsedIconColor: Colors.white,
-                // backgroundColor: Colors.lightBlue.withOpacity(0.2),
-                collapsedShape: Border.fromBorderSide(
-                    BorderSide(color: Colors.transparent)),
-                shape: Border.fromBorderSide(
-                    BorderSide(color: Colors.transparent)),
-                title: customCardList[index].getCard(),
-                onExpansionChanged: (bool value) {
-                  setState(() {
-                    customCardList[index].switchExpandValue();
-                  });
-                },
-              ),
+          return CustomCard(
+              child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: ExpansionTile(
+              iconColor: Colors.white,
+              // collapsedBackgroundColor: Colors.red,
+              collapsedIconColor: Colors.white,
+              // backgroundColor: Colors.lightBlue.withOpacity(0.2),
+              collapsedShape:
+                  Border.fromBorderSide(BorderSide(color: Colors.transparent)),
+              shape:
+                  Border.fromBorderSide(BorderSide(color: Colors.transparent)),
+              title: customCardList[index].getCard(),
+              onExpansionChanged: (bool value) {
+                setState(() {
+                  customCardList[index].switchExpandValue();
+                });
+              },
             ),
-          );
+          ));
         });
   }
 
@@ -114,20 +113,19 @@ class _UpdateTabState extends State<UpdateTab> {
         Provider.of<UpdateExplanationViewModel>(context, listen: false);
     return Column(
       children: [
-        _getCardText(
-            text: textUpdateExplanation, textColor: Colors.white),
+        _getCardText(text: textUpdateExplanation, textColor: Colors.white),
         InputFieldWithTitle(
             title: "Data",
             controller: vm.dataController,
-            hintText: "Type data of explanation to update"),
+            hintText: "Example : AES"),
         InputFieldWithTitle(
             title: "Current Explanation",
             controller: vm.oldExplanationController,
-            hintText: "Type current explanation will be updated"),
+            hintText: "Example : Ahmet Emin SAGLIK"),
         InputFieldWithTitle(
             title: "New Explanation",
             controller: vm.newExplanationController,
-            hintText: "Type new explanation"),
+            hintText: "Java & Flutter Developer"),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: CustomButtonLocation_BottomRight(CustomElevatedButton(
@@ -146,18 +144,17 @@ class _UpdateTabState extends State<UpdateTab> {
         Provider.of<UpdateCharsViewModel>(context, listen: false);
     return Column(
       children: [
-        _getCardText(
-            text: textUpdateCharacter, textColor: Colors.white),
+        _getCardText(text: textUpdateCharacter, textColor: Colors.white),
         InputFieldWithTitle(
             // title: "Character to put next ",
             title: "Referance Char ",
             controller: vm.charToNextController,
-            hintText: "Type data of explanation to update",
+            hintText: "Example : a",
             maxLength: 1),
         InputFieldWithTitle(
             title: "Character list to update",
             controller: vm.charListController,
-            hintText: "Type data of explanation to update"),
+            hintText: "Example : abcd"),
         CustomButtonLocation_BottomRight(CustomElevatedButton(
             text: "Update",
             function: () {
@@ -173,12 +170,11 @@ class _UpdateTabState extends State<UpdateTab> {
         Provider.of<ResetCharViewModel>(context, listen: false);
     return Column(
       children: [
-        _getCardText(
-            text: textResetCharacter, textColor: Colors.white),
+        _getCardText(text: textResetCharacter, textColor: Colors.white),
         InputFieldWithTitle(
             title: "Character list",
             controller: vm.charListController,
-            hintText: "Type characters to reset : abcd"),
+            hintText: "Example : abcd"),
         CustomButtonLocation_BottomRight(CustomElevatedButton(
             text: "Reset",
             function: () {

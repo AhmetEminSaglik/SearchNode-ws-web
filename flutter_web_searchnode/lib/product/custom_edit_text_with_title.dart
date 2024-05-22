@@ -27,7 +27,7 @@ Widget CustomTextField({required TextEditingController controller, String hintTe
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(_borderRadious),
           borderSide:
-              const BorderSide(width: _borderWidth, color: Colors.blue)),
+              const BorderSide(width: _borderWidth, color: Colors.white)),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(_borderRadious),
           borderSide:
