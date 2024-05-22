@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
+import 'package:flutter_web_searchnode/tools/CustomColors.dart';
 import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -79,7 +80,7 @@ class ResultArea extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(vm.logs[index],style:  TextStyle(color: Colors.white),),
+        Text(vm.logs[index],style:  TextStyle(color: Colors.white,fontSize: 18),),
         HeightSpace(),
         CustomDivider(),
       ],

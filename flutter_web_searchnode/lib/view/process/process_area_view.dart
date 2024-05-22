@@ -28,7 +28,7 @@ class ProcessArea extends StatelessWidget {
                 // Tab(child: _getTabBarText("Save", Icons.add, Colors.blue)),
                 // Tab(child: _getTabBarText("Update", Icons.edit, Colors.green)),
                 // Tab(child: _getTabBarText("Delete", Icons.delete, Colors.red)),
-                Tab(child: _getTabBarText("", Icons.edit, Colors.green)),
+                Tab(child: _getTabBarText("", Icons.edit, Colors.green,)),
                 Tab(child: _getTabBarText("", Icons.add, Colors.blue)),
                 Tab(child: _getTabBarText("", Icons.delete, Colors.red)),
               ],
@@ -59,7 +59,7 @@ class ProcessArea extends StatelessWidget {
         text: TextSpan(children: [
       TextSpan(text: text, style: TextStyle(color: color, fontSize: 20)),
       const WidgetSpan(child: SizedBox(width: 5)),
-      WidgetSpan(child: Icon(iconData, color: color, size: 25)),
+      WidgetSpan(child: Icon(iconData, color: color, size: 40)),
     ]));
     /* return Text(
       text,

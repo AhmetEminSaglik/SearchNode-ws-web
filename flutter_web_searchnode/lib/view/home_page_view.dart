@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart';
 import 'package:flutter_web_searchnode/product/triange_painter.dart';
+import 'package:flutter_web_searchnode/tools/CustomColors.dart';
 import 'package:flutter_web_searchnode/tools/SingletonBuildContext.dart';
 import 'package:flutter_web_searchnode/tools/locator.dart';
 import 'package:flutter_web_searchnode/view/process/process_area_view.dart';
@@ -10,7 +11,12 @@ import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   static bool initialized = false;
 
   _initializeBuildContextLocator(BuildContext context) {
@@ -21,6 +27,24 @@ class HomePage extends StatelessWidget {
     }
   }
 
+  bool _isVisible = false;
+
+  initAnimation() async {
+    if (_isVisible == false) {
+      await Future.delayed(const Duration(seconds: 1));
+      setState(() {
+        _isVisible = true;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initAnimation();
+  }
+
   @override
   Widget build(BuildContext context) {
     _initializeBuildContextLocator(context);
@@ -29,7 +53,24 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white70,
       body: Stack(
         children: [
-
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  color: Colors.green,
+                ),
+              ),
+              Expanded(
+                  child: Container(
+                color: Colors.white,
+              )),
+              Expanded(
+                child: Container(
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
           LayoutBuilder(
             builder: (context, constraints) {
               return Center(
@@ -45,7 +86,13 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-          _buildBody(context),
+          AnimatedOpacity(
+            opacity: _isVisible ? 1.0 : 0,
+            duration: Duration(milliseconds: 1000),
+            child: Center(
+              child: _buildBody(context),
+            ),
+          ),
         ],
       ),
     );
@@ -67,7 +114,7 @@ class HomePage extends StatelessWidget {
               _buildTitleOfDividedArea(
                   title: "SEARCH NODE",
                   widget: _getSearchNodeListLengthInCircularWidget(context),
-                  color: Colors.lightBlue),
+                  color: CustomColors.backgroudnLightBlack),
               Expanded(child: SearchNodeArea()),
             ],
           ),
@@ -75,18 +122,18 @@ class HomePage extends StatelessWidget {
         VerticalDivider(),
         Expanded(
             child: Column(children: [
-          _buildTitleOfDividedArea(title: "PROCESS", color: Colors.red),
+          _buildTitleOfDividedArea(title: "PROCESS", color: CustomColors.backgroudnLightBlack),
           Expanded(child: ProcessArea()),
         ])),
         VerticalDivider(),
         Expanded(
             child: Column(children: [
-              _buildTitleOfDividedArea(
-                  title: "RESULT",
-                  widget: _getLogsLengthInCircularWidget(context),
-                  color: Colors.orange),
-              Expanded(child: ResultArea()),
-            ])),
+          _buildTitleOfDividedArea(
+              title: "RESULT",
+              widget: _getLogsLengthInCircularWidget(context),
+              color: CustomColors.backgroudnLightBlack),
+          Expanded(child: ResultArea()),
+        ])),
       ],
     );
   }
@@ -137,4 +184,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

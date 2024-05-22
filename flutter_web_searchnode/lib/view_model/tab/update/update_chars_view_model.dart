@@ -21,7 +21,7 @@ class UpdateCharsViewModel extends CommonTabProcessViewModel {
     respond =
         await SearchNodeHttpRequest.updateCharacterList(charToNext, charList);
     updateSuccess(respond.isSuccess);
-    print('Buraya gelen respond :${respond}');
+    // print('Buraya gelen respond :${respond}');
     updateMsg(respond.msg);
   }
 

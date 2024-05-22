@@ -39,22 +39,6 @@ public class SearchNodeController {
     @GetMapping()
 //    public ResponseEntity<SearchNodeDTO<String>> getSearchNodeDTO() {
     public SearchNodeDTO<String> getSearchNodeDTO() {
-        if(sn.getTotalItemNumber()==0){
-            sn.add("a","2");
-//            sn.add("ca","4");
-            sn.add("a","1");
-//            sn.add("ca","3");
-            sn.add("a");
-            sn.add("b");
-            sn.add("c");
-            sn.add("d");
-//            sn.add("d");
-//            sn.add("a");
-//            sn.add("b");
-//            sn.updatePriorityChar('d','a');// a c b d -> a c d b
-//            sn.updatePriorityChar('a','c');// a c b d -> a c d b
-            sn.updatePriorityChar('a','d');
-        }
         log.info("All SearchNode data is retrieved");
         SearchNodeDTO<String> dto = SearchNodeMapper.toDTO(sn);
         return dto;

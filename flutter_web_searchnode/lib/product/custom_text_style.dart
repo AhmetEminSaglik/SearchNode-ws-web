@@ -12,7 +12,7 @@ TextStyle CustomTextStyleForResultMsg(/*bool success*/) {
 
 Color CustomMsgContainerBackgroundStyle(bool success) {
   // return success ? Colors.lightGreenAccent.shade700.withOpacity(0.8) : Colors.red;
-  return success ? Colors.lightGreenAccent : Colors.red;
+  return success ? CustomColors.lightGreen : CustomColors.lightRed;
   // return success ? Colors.green : Colors.red;
 }
 

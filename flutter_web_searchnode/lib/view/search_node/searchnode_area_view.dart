@@ -3,6 +3,7 @@ import 'package:flutter_web_searchnode/model/data_info_dto.dart';
 import 'package:flutter_web_searchnode/model/node_data_dto.dart';
 import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
+import 'package:flutter_web_searchnode/tools/CustomColors.dart';
 import 'package:flutter_web_searchnode/view_model/searchnode_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +43,8 @@ class SearchNodeArea extends StatelessWidget {
       builder: (context, nodeDataDTO, child) => Padding(
         padding: const EdgeInsets.only(left: 5, right: 5),
         child: Card(
-          color: Colors.lightBlueAccent,
+          color: CustomColors.CBOWhite,
+          // color: CustomColors.white,
           child: _getExpansionTile(isCollapsed, viewModel, index),
         ),
       ),
@@ -58,7 +60,8 @@ class SearchNodeArea extends StatelessWidget {
           onExpansionChanged: (bool) {
             isCollapsed = bool;
           },
-          backgroundColor: Colors.pink,
+          // backgroundColor: CustomColors.lightGreen,
+          backgroundColor: CustomColors.CBOLightGreen,
           shape: Border.fromBorderSide(BorderSide(color: Colors.transparent)),
           collapsedShape:
               Border.fromBorderSide(BorderSide(color: Colors.transparent)),
@@ -100,7 +103,7 @@ class SearchNodeArea extends StatelessWidget {
           leading: _getSubItemTextKey(text: "${index + 1}-) "),
           //_getCircularShapeIntValue(index + 1, Colors.blue),
           trailing: CustomCircularShapeIntValue(
-              value: nodeData.listDataInfoDTO!.length, color: Colors.black),
+              value: nodeData.listDataInfoDTO!.length, color: CustomColors.white,backgroundColor: CustomColors.black ),
           // leading: _getCircularShapeIntValue(index + 1),
           // trailing: _getCircularShapeIntValue(nodeData.listDataInfoDTO!.length),
           children: viewModel

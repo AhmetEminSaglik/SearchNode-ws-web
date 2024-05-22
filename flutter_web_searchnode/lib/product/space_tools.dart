@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-Widget CustomDivider() {
+Widget CustomDivider({Color color=Colors.white}) {
   return Column(
     children: [
       Container(
         height: 3,
         width: double.infinity,
-        color: Colors.black,
+        color: color,
       ),
       HeightSpace(10),
     ],
