@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/model/UpdateTabCard.dart';
 import 'package:flutter_web_searchnode/product/custom_card.dart';
+import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart';
 import 'package:flutter_web_searchnode/product/custom_common_tab_widget.dart';
 import 'package:flutter_web_searchnode/product/custom_edit_text_with_title.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
@@ -37,7 +38,7 @@ class _UpdateTabState extends State<UpdateTab> {
       shrinkWrap: true,
       children: [
         Container(
-            color:CustomColors.opacityWhite,
+            color: CustomColors.opacityWhite,
             child: CustomTabTitle(text: "Update Process", color: Colors.green)),
         HeightSpace(15),
         CustomDivider(),
@@ -76,6 +77,22 @@ class _UpdateTabState extends State<UpdateTab> {
             borderRadius: BorderRadius.circular(10),
             child: ExpansionTile(
               iconColor: Colors.white,
+              trailing: customCardList[index].isExpanded
+                  ? CustomCircularShapeIconButton(
+                      iconData: Icons.keyboard_arrow_up_sharp,
+                      color: CustomColors.black,
+                      onPressed: () {
+                        setState(() {
+                          customCardList[index].collapse();
+                        });
+                      })
+                  : CustomCircularShapeIconButton(
+                      iconData: Icons.keyboard_arrow_down_sharp,
+                      onPressed: () {
+                        setState(() {
+                          customCardList[index].expand();
+                        });
+                      }),
               // collapsedBackgroundColor: Colors.red,
               collapsedIconColor: Colors.white,
               // backgroundColor: Colors.lightBlue.withOpacity(0.2),
@@ -86,7 +103,7 @@ class _UpdateTabState extends State<UpdateTab> {
               title: customCardList[index].getCard(),
               onExpansionChanged: (bool value) {
                 setState(() {
-                  customCardList[index].switchExpandValue();
+                  customCardList[index].expand();
                 });
               },
             ),
@@ -117,15 +134,15 @@ class _UpdateTabState extends State<UpdateTab> {
         InputFieldWithTitle(
             title: "Data",
             controller: vm.dataController,
-            hintText: "Example : AES"),
+            hintText: "Example : Leve Palestina"),
         InputFieldWithTitle(
             title: "Current Explanation",
             controller: vm.oldExplanationController,
-            hintText: "Example : Ahmet Emin SAGLIK"),
+            hintText: "Example : Live Palestine"),
         InputFieldWithTitle(
             title: "New Explanation",
             controller: vm.newExplanationController,
-            hintText: "Java & Flutter Developer"),
+            hintText: "Example : Long live Palestine"),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: CustomButtonLocation_BottomRight(CustomElevatedButton(
@@ -174,7 +191,7 @@ class _UpdateTabState extends State<UpdateTab> {
         InputFieldWithTitle(
             title: "Character list",
             controller: vm.charListController,
-            hintText: "Example : abcd"),
+            hintText: "Example : Zionism"),
         CustomButtonLocation_BottomRight(CustomElevatedButton(
             text: "Reset",
             function: () {

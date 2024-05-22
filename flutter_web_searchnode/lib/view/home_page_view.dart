@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart';
+import 'package:flutter_web_searchnode/product/triange_painter.dart';
 import 'package:flutter_web_searchnode/tools/SingletonBuildContext.dart';
 import 'package:flutter_web_searchnode/tools/locator.dart';
 import 'package:flutter_web_searchnode/view/process/process_area_view.dart';
@@ -137,25 +138,3 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class TrianglePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = Colors.red
-      ..style = PaintingStyle.fill;
-
-    Path path = Path();
-    double height = size.height / 3;
-    path.moveTo(size.width / 2, height); // Top point
-    path.lineTo(size.width, 0); // Bottom right
-    path.lineTo(0, 0); // Bottom left
-    path.close();
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
-}

@@ -15,8 +15,17 @@ class UpdateCardWidgetTab {
     return _isExpanded ? _expandedCard : _collapsedCard;
   }
 
-  void switchExpandValue() {
-    _isExpanded = !_isExpanded;
+  // void switchExpandValue() {
+  //   _isExpanded = !_isExpanded;
+  // }
+
+  void expand() {
+    print('"geldi buraya expand yapoicak');
+    _isExpanded = true;
+  }
+
+  void collapse() {
+    _isExpanded = false;
   }
 
   bool get isExpanded => _isExpanded;
