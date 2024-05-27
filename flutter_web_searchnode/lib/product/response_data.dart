@@ -1,9 +1,9 @@
-class RespondDataResult {
+class ResponseDataResult {
   late bool _isSuccess;
   late String _msg;
   late var _data;
 
-  RespondDataResult.fromJson(Map<String, dynamic> json) {
+  ResponseDataResult.fromJson(Map<String, dynamic> json) {
     _isSuccess = json["success"];
     _msg = json["msg"] ?? "---";
     _data = json["data"] ?? "---";

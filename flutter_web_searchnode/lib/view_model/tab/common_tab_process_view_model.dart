@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_searchnode/product/respond_data.dart';
+import 'package:flutter_web_searchnode/product/response_data.dart';
 import 'package:flutter_web_searchnode/tools/SingletonBuildContext.dart';
 import 'package:flutter_web_searchnode/tools/locator.dart';
 import 'package:flutter_web_searchnode/view_model/result_view_model.dart';
@@ -16,7 +16,7 @@ abstract class CommonTabProcessViewModel with ChangeNotifier {
   @protected
   late bool isSuccess;
   @protected
-  late RespondDataResult respond;
+  late ResponseDataResult respond;
 
   @protected
   String get msg => _msg;

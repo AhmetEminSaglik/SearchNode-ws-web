@@ -12,17 +12,25 @@ class LoggerHttpRequest {
   static Future<List<String>> getAllLogData() async {
     Uri url = Uri.parse(_baseUrl);
     print("Link : $url");
-    var respond = await http.get(url, headers: HttpUtil.header);
-    List<String> list = (json.decode(respond.body) as List<dynamic>)
+    var response = await http.get(url, headers: HttpUtil.header);
+    String responseBody=utf8.decode(response.bodyBytes);
+    // List<String> list = (json.decode(response.body) as List<dynamic>)
+    List<String> list = (json.decode(responseBody) as List<dynamic>)
         .map((e) => e.toString())
         .toList();
+    // Uint8List bodyBytes = response.bodyBytes;
+    //
+    // List<String> stringList = [];
+    // for (int byte in bodyBytes) {
+    //   stringList.add(String.fromCharCode(byte));
+    // }
     return list;
   }
 
   static Future<void> clearLogs() async {
     Uri url = Uri.parse(_baseUrl);
     print("Link : $url");
-    var respond = await http.delete(url, headers: HttpUtil.header);
-    print("Respond : $respond");
+    var response = await http.delete(url, headers: HttpUtil.header);
+    print("Response : $response");
   }
 }
