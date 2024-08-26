@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/ahmet-emin/snap/flutter/common/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/ahmet-emin/Desktop/github_projects/searchnode_linkedin/flutter_web_searchnode"
+export "FLUTTER_ROOT=C:\flutter"
+export "FLUTTER_APPLICATION_PATH=D:\projects\intelijidea\Frontend-Flutter-For-SearchNode\flutter_web_searchnode"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"

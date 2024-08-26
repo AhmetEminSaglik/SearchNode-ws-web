@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_searchnode/model/UpdateTabCard.dart';
+import 'package:flutter_web_searchnode/model/update_tab_card.dart';
 import 'package:flutter_web_searchnode/product/custom_card.dart';
 import 'package:flutter_web_searchnode/product/custom_circular_shape_value.dart';
 import 'package:flutter_web_searchnode/product/custom_common_tab_widget.dart';
