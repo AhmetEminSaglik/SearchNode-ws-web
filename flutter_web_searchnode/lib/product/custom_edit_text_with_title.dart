@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
+import 'package:flutter_web_searchnode/tools/CustomColors.dart';
 
 InputFieldWithTitle({String title="", required TextEditingController controller,int maxLength=-1,String hintText=""}) {
   return Padding(
@@ -24,6 +25,8 @@ Widget CustomTextField({required TextEditingController controller, String hintTe
     style: CustomTextStyleForInput(),
     decoration: InputDecoration(
       hintText: hintText,
+      // hintFadeDuration: Duration(seconds: 1),
+      hintStyle: TextStyle(color:CustomColors.darkWhite),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(_borderRadious),
           borderSide:

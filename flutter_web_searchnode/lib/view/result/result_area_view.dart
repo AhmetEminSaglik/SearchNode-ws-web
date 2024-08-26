@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_web_searchnode/product/custom_location.dart';
 import 'package:flutter_web_searchnode/product/custom_text_style.dart';
 import 'package:flutter_web_searchnode/product/space_tools.dart';
@@ -52,7 +50,7 @@ class ResultArea extends StatelessWidget {
 
         HeightSpace(7),
         Provider.of<ResultViewModel>(context).logs.isNotEmpty
-            ? CustomDivider()
+            ? CustomDivider(color: CustomColors.black)
             : Container(),
       ],
     );
@@ -80,9 +78,12 @@ class ResultArea extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(vm.logs[index],style:  TextStyle(color: Colors.white,fontSize: 18),),
+        Text(
+          vm.logs[index],
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
         HeightSpace(),
-        CustomDivider(),
+        CustomDivider(color: CustomColors.black),
       ],
     );
   }

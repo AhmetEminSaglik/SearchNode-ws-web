@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
 
   initAnimation() async {
     if (_isVisible == false) {
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 0 /*1*/));
       setState(() {
         _isVisible = true;
       });
@@ -54,18 +54,22 @@ class _HomePageState extends State<HomePage> {
         children: [
           Row(
             children: [
+              // Expanded(child: Container(color:Color(0xFFF44336)))
               Expanded(
                 child: Container(
-                  color: Colors.green,
+                  color: CustomColors.blue,
                 ),
               ),
               Expanded(
                   child: Container(
-                color: Colors.white,
+                // color: Color(0xFF4CAF50),
+                // color: CustomColors.red,
+                color: CustomColors.green,
               )),
               Expanded(
                 child: Container(
-                  color: Colors.black,
+                  // color: CustomColors.green,
+                  color: CustomColors.red,
                 ),
               ),
             ],

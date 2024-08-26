@@ -68,11 +68,11 @@ class SaveTab extends StatelessWidget {
         InputFieldWithTitle(
             title: "Data",
             controller: vm.controllerData,
-            hintText: "Type to add Data"),
+            hintText: "Example: AES"),
         InputFieldWithTitle(
             title: "Examination",
             controller: vm.controllerExplanation,
-            hintText: "Type to add Explanation"),
+            hintText: "Example: Ahmet Emin SAGLIK"),
         CustomButtonLocation_BottomRight(_getSaveButton(context, "Save")),
         _getResultMsg(),
       ],

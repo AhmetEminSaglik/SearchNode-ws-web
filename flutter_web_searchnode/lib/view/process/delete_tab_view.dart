@@ -55,7 +55,7 @@ class DeleteTab extends StatelessWidget {
         InputFieldWithTitle(
             title: "Data",
             controller: vm.txtEditController,
-            /*hintText: "Type data to delete"*/),
+            hintText: "Example: AES"),
         CustomButtonLocation_BottomRight(CustomElevatedButton(
             text: "Delete",
             function: () async {

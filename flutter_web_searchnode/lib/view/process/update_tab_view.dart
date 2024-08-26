@@ -134,15 +134,15 @@ class _UpdateTabState extends State<UpdateTab> {
         InputFieldWithTitle(
             title: "Data",
             controller: vm.dataController,
-            hintText: "Example : Leve Palestina"),
+            hintText: "Example :AES"),
         InputFieldWithTitle(
             title: "Current Explanation",
             controller: vm.oldExplanationController,
-            hintText: "Example : Live Palestine"),
+            hintText: "Example: Ahmet Emin SAGLIK"),
         InputFieldWithTitle(
             title: "New Explanation",
             controller: vm.newExplanationController,
-            hintText: "Example : Long live Palestine"),
+            hintText: "Example: My Logo"),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: CustomButtonLocation_BottomRight(CustomElevatedButton(
@@ -191,7 +191,7 @@ class _UpdateTabState extends State<UpdateTab> {
         InputFieldWithTitle(
             title: "Character list",
             controller: vm.charListController,
-            hintText: "Example : Zionism"),
+            hintText: "Example : abc"),
         CustomButtonLocation_BottomRight(CustomElevatedButton(
             text: "Reset",
             function: () {
