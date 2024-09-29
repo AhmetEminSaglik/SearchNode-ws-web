@@ -1,7 +1,8 @@
+/*
 import com.ahmeteminsaglik.ws.mapper.SearchNodeMapper;
 import com.ahmeteminsaglik.ws.model.SearchNodeDTO;
-import org.aes.searchnode.business.abstracts.searchnode.SearchNodeService;
-import org.aes.searchnode.business.concretes.searchnode.SearchNode;
+import org.ahmeteminsaglik.searchnode.business.abstracts.searchnode.SearchNodeService;
+import org.ahmeteminsaglik.searchnode.business.concretes.searchnode.SearchNode;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,3 +32,4 @@ public class Main {
         });
     }
 }
+*/

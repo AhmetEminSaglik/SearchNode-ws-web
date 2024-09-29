@@ -1,7 +1,7 @@
 /*
 package com.ahmeteminsaglik.ws.delete;
 
-import org.aes.searchnode.business.concretes.searchnode.SearchNode;
+import org.ahmeteminsaglik.searchnode.business.concretes.searchnode.SearchNode;
 
 public class MainTest {
     public static void main(String[] args) {

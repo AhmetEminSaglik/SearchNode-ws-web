@@ -2,12 +2,12 @@
 package com.ahmeteminsaglik.ws.dataaccess.concretes;
 
 import com.ahmeteminsaglik.ws.dataaccess.abstracts.SearchNodeInitializer;
-import org.aes.searchnode.business.concretes.searchnode.SearchNode;
-import org.aes.searchnode.core.utilities.DataResult;
-import org.aes.searchnode.core.utilities.Result;
-import org.aes.searchnode.entities.DataInfo;
-import org.aes.searchnode.entities.NodeData;
-import org.aes.searchnode.entities.NodeDataService;
+import org.ahmeteminsaglik.searchnode.business.concretes.searchnode.SearchNode;
+import org.ahmeteminsaglik.searchnode.core.utilities.DataResult;
+import org.ahmeteminsaglik.searchnode.core.utilities.Result;
+import org.ahmeteminsaglik.searchnode.entities.DataInfo;
+import org.ahmeteminsaglik.searchnode.entities.NodeData;
+import org.ahmeteminsaglik.searchnode.entities.NodeDataService;
 
 import java.util.List;
 

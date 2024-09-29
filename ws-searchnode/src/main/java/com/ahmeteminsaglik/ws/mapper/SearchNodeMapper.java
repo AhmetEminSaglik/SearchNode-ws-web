@@ -4,9 +4,9 @@ package com.ahmeteminsaglik.ws.mapper;
 import com.ahmeteminsaglik.ws.model.DataInfoDTO;
 import com.ahmeteminsaglik.ws.model.NodeDataDTO;
 import com.ahmeteminsaglik.ws.model.SearchNodeDTO;
-import org.aes.searchnode.business.concretes.searchnode.SearchNode;
-import org.aes.searchnode.entities.DataInfo;
-import org.aes.searchnode.entities.NodeData;
+import org.ahmeteminsaglik.searchnode.business.concretes.searchnode.SearchNode;
+import org.ahmeteminsaglik.searchnode.entities.DataInfo;
+import org.ahmeteminsaglik.searchnode.entities.NodeData;
 
 import java.util.ArrayList;
 import java.util.List;
